@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Spark — the stock market, explained without the jargon</title>
+<meta property="og:title" content="Stock Spark">
+<meta property="og:type" content="website">
+<meta property="og:description" content="A student-built guide to stocks, bonds, exchanges and dividends — and the scams to avoid. Plain English, no hype.">
+<meta name="description" content="A student-built guide to stocks, bonds, exchanges, dividends and the scams to avoid. Plain English. No jargon. No hype.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2038%2028%27%3E%3Crect%20x%3D%273%27%20y%3D%2717%27%20width%3D%276%27%20height%3D%279%27%20rx%3D%271.2%27%20fill%3D%27%2316192B%27%20fill-opacity%3D%27.35%27%2F%3E%3Crect%20x%3D%2712%27%20y%3D%2712.5%27%20width%3D%276%27%20height%3D%2713.5%27%20rx%3D%271.2%27%20fill%3D%27%2316192B%27%20fill-opacity%3D%27.55%27%2F%3E%3Crect%20x%3D%2721%27%20y%3D%278%27%20width%3D%276%27%20height%3D%2718%27%20rx%3D%271.2%27%20fill%3D%27%2316192B%27%20fill-opacity%3D%27.75%27%2F%3E%3Cpath%20d%3D%27M1.5%2024.5%20L15.5%206.5%20L12.5%2014.5%20L33.5%201%20L20%2020.5%20L23%2012.5%20Z%27%20fill%3D%27%23FFB627%27%2F%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F8FC;
+  --mist:#EAEDF7;
+  --card:#FFFFFF;
+  --ink:#16192B;
+  --ink-soft:#4A506B;
+  --rule:#D3D8EA;
+  --deep:#16192B;
+  --deep-line:rgba(255,255,255,.16);
+  --on-deep:#FFFFFF;
+  --on-deep-soft:#9AA3C4;
+  --spark:#FFB627;
+  --spark-deep:#E09400;
+  --spark-tint:#FFF1D2;
+  --surge:#2F6FED;
+  --surge-tint:rgba(47,111,237,.10);
+  --rise:#1F9E6E;
+  --rise-tint:#EAF7F1;
+  --fall:#D93B2B;
+  --fall-tint:#FFF4F3;
+  --surge-text:#1A56C7;
+  --rise-text:#127553;
+  --fall-text:#B3261E;
+  --spark-text:#875A00;
+  --measure:66ch;
+  --body-face:"Newsreader",Georgia,serif;
+  --body-leading:1.68;
+}
+
+html[data-theme="dark"]{
+  --paper:#101320;
+  --mist:#1C2032;
+  --card:#191D2C;
+  --ink:#EDEFF7;
+  --ink-soft:#A0A8C6;
+  --rule:#2C3149;
+  --deep:#080A12;
+  --spark-tint:#38290B;
+  --surge-tint:rgba(47,111,237,.16);
+  --rise-tint:#11291F;
+  --fall-tint:#2B1512;
+  --surge:#6E9BFF;
+  --surge-text:#8FB4FF;
+  --rise-text:#58D7A6;
+  --fall-text:#FF9385;
+  --spark-text:#FFC661;
+}
+
+html[data-size="lg"]{font-size:112.5%;}
+html[data-size="xl"]{font-size:125%;}
+html[data-face="sans"]{
+  --body-face:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --body-leading:1.62;
+}
+html[data-motion="off"] *{animation:none !important;transition:none !important;}
+html[data-motion="off"] .draw{stroke-dashoffset:0 !important;}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:7rem;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important;}
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body-face);
+  font-size:1.0625rem;
+  line-height:var(--body-leading);
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4,.face{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;}
+h1,h2,h3,h4{line-height:1.08;letter-spacing:-.02em;font-weight:800;margin:0;}
+p{margin:0 0 1.1em;max-width:var(--measure);}
+a{color:var(--surge-text);text-underline-offset:3px;text-decoration-thickness:1px;}
+a:hover{color:var(--ink);}
+:focus-visible{outline:3px solid var(--surge);outline-offset:3px;border-radius:2px;}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem);}
+
+/* ---------- skip link ---------- */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:100;
+  background:var(--spark);color:#16192B;text-decoration:none;
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.9rem;
+  padding:.6rem 1.1rem;border-radius:0 0 8px 0;
+}
+.skip:focus{left:0;}
+
+/* ---------- masthead + tabs ---------- */
+.masthead{
+  position:sticky;top:0;z-index:60;
+  background:var(--deep);
+  border-bottom:3px solid var(--spark);
+}
+.mast-row{display:flex;align-items:center;gap:1.25rem;padding:.7rem 0 0;}
+.logo{
+  display:flex;align-items:center;gap:.55rem;
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+  font-size:1.2rem;letter-spacing:-.03em;color:#fff;text-decoration:none;flex:none;
+}
+.logo svg{display:block;}
+.tagline{
+  color:var(--on-deep-soft);font-size:.82rem;font-family:"Bricolage Grotesque",sans-serif;
+  font-weight:400;letter-spacing:0;margin-left:.3rem;flex:none;
+}
+@media(max-width:1080px){.tagline{display:none;margin:0;}}
+
+/* ---------- site search ---------- */
+.searchbox{position:relative;flex:0 1 288px;margin-left:auto;}
+.searchbox .sicon{
+  position:absolute;left:.62rem;top:50%;transform:translateY(-50%);
+  color:#9AA3C4;pointer-events:none;
+}
+#sq{
+  width:100%;appearance:none;font-family:"Bricolage Grotesque",sans-serif;font-size:.86rem;
+  padding:.42rem .7rem .42rem 2rem;border-radius:7px;
+  border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.09);color:#fff;
+}
+#sq::placeholder{color:#AEB6D2;}
+#sq:focus{outline:none;border-color:var(--spark);background:rgba(255,255,255,.17);}
+#sq::-webkit-search-cancel-button{filter:invert(1) opacity(.6);}
+.sresults{
+  position:absolute;top:calc(100% + .45rem);left:0;right:0;z-index:70;display:none;
+  background:var(--card);border:1px solid var(--rule);border-radius:10px;
+  box-shadow:0 14px 34px rgba(8,12,28,.3);max-height:62vh;overflow-y:auto;
+}
+.sresults.on{display:block;}
+.sresult{
+  display:block;width:100%;text-align:left;appearance:none;border:0;background:none;cursor:pointer;
+  padding:.56rem .78rem;border-bottom:1px solid var(--rule);
+  font-family:var(--body-face);font-size:.92rem;line-height:1.45;color:var(--ink);
+}
+.sresult:last-child{border-bottom:0;}
+.sresult:hover,.sresult.sel{background:var(--mist);}
+.swhere{
+  display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:.72rem;
+  font-weight:600;color:var(--surge-text);margin-bottom:.12rem;
+}
+.sresults mark{background:var(--spark-tint);color:inherit;border-radius:2px;padding:0 .12em;}
+.snone{margin:0;padding:.75rem .78rem;color:var(--ink-soft);font-size:.92rem;}
+.hit{animation:hitflash 2.4s ease-out;border-radius:4px;}
+@keyframes hitflash{
+  0%,45%{background:var(--spark-tint);box-shadow:0 0 0 7px var(--spark-tint);}
+  100%{background:transparent;box-shadow:none;}
+}
+@media(max-width:700px){
+  .mast-row{flex-wrap:wrap;}
+  .searchbox{order:5;flex:1 0 100%;margin:.55rem 0 0;}
+  #sq{padding:.62rem .7rem .62rem 2.1rem;font-size:1rem;}
+  .searchbox .sicon{left:.7rem;}
+  .tab{padding:.6rem .68rem;}
+}
+
+.gear{
+  margin-left:auto;flex:none;appearance:none;cursor:pointer;
+  display:flex;align-items:center;gap:.4rem;
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);
+  color:#D6DBEE;border-radius:7px;padding:.35rem .7rem;
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.85rem;font-weight:600;
+}
+.gear:hover{background:rgba(255,255,255,.17);color:#fff;}
+.gear[aria-expanded="true"]{background:var(--spark);border-color:var(--spark);color:#16192B;}
+@media(max-width:860px){.tagline+.gear,.gear{margin-left:auto;}}
+@media(max-width:700px){.gear{padding:.55rem .9rem;}}
+
+.drawer{
+  display:none;background:rgba(255,255,255,.05);
+  border-top:1px solid rgba(255,255,255,.14);
+  padding:1.1rem 0 1.3rem;
+}
+.drawer.on{display:block;}
+.drawer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1.1rem 1.6rem;}
+.set label{
+  display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:.78rem;
+  color:var(--on-deep-soft);margin-bottom:.35rem;
+}
+.seg{display:flex;gap:.25rem;flex-wrap:wrap;}
+.seg button{
+  appearance:none;cursor:pointer;font-family:"Bricolage Grotesque",sans-serif;font-weight:600;
+  background:rgba(255,255,255,.08);color:#C6CCE4;border:1px solid rgba(255,255,255,.16);
+  border-radius:6px;padding:.32rem .62rem;font-size:.86rem;
+}
+.seg button:hover{background:rgba(255,255,255,.18);color:#fff;}
+.seg button[aria-pressed="true"]{background:var(--spark);color:#16192B;border-color:var(--spark);}
+.drawer-foot{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+  margin-top:1.1rem;padding-top:.9rem;border-top:1px solid rgba(255,255,255,.14);
+}
+.drawer-foot p{
+  margin:0;color:var(--on-deep-soft);font-size:.83rem;max-width:52ch;
+  font-family:"Bricolage Grotesque",sans-serif;
+}
+.drawer-foot button{
+  appearance:none;cursor:pointer;background:none;border:1px solid rgba(255,255,255,.3);
+  color:#D6DBEE;border-radius:6px;padding:.35rem .8rem;
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.85rem;font-weight:600;
+}
+.drawer-foot button:hover{background:rgba(255,255,255,.14);color:#fff;}
+
+.tabs{
+  display:flex;flex-wrap:wrap;gap:.15rem;padding:.55rem 0 0;
+}
+@media(max-width:900px){
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.42) transparent;}
+  .tabs::-webkit-scrollbar{height:4px;}
+  .tabs::-webkit-scrollbar-thumb{background:rgba(255,255,255,.42);border-radius:4px;}
+  .tabs::-webkit-scrollbar-track{background:transparent;}
+}
+.tab{
+  flex:none;appearance:none;border:0;background:none;cursor:pointer;
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.86rem;font-weight:600;
+  color:#A8B0CE;padding:.48rem .62rem;border-radius:6px 6px 0 0;
+  border-bottom:3px solid transparent;margin-bottom:-3px;
+  transition:color .15s,background .15s;white-space:nowrap;
+}
+.tab:hover{color:#fff;background:rgba(255,255,255,.07);}
+.tab[aria-selected="true"]{color:#16192B;background:var(--spark);border-bottom-color:var(--spark);}
+
+/* ---------- panels ---------- */
+.panel{display:none;padding:3rem 0 5rem;animation:rise .22s ease-out;}
+.panel.on{display:block;}
+@keyframes rise{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+.kicker{
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:.9rem;
+  color:var(--surge-text);margin:0 0 .5rem;
+}
+h2.big{font-size:clamp(2rem,5.2vw,3.1rem);margin-bottom:.6rem;}
+h3{font-size:1.42rem;margin:2.6rem 0 .7rem;}
+h4{font-size:1.08rem;margin:1.7rem 0 .4rem;font-weight:600;}
+.lede{font-size:1.22rem;color:var(--ink-soft);max-width:60ch;margin-bottom:2rem;}
+
+/* ---------- hero ---------- */
+.hero{padding:3.4rem 0 1rem;}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);max-width:15ch;}
+.hero h1 .strike{text-decoration:line-through;text-decoration-thickness:5px;text-decoration-color:var(--fall);color:var(--ink-soft);}
+.hero p.lede{margin-top:1.4rem;font-size:1.3rem;}
+
+.calc{
+  margin:2.5rem 0 0;background:var(--deep);color:var(--on-deep);border-radius:14px;
+  padding:clamp(1.3rem,3.5vw,2.2rem);
+}
+.calc h3{color:#fff;margin:0 0 .3rem;font-size:1.28rem;}
+.calc .sub{color:var(--on-deep-soft);font-size:.98rem;margin-bottom:1.5rem;max-width:52ch;}
+.calc-grid{display:grid;grid-template-columns:minmax(0,270px) minmax(0,1fr);gap:2rem;align-items:start;}
+@media(max-width:760px){.calc-grid{grid-template-columns:1fr;gap:1.4rem;}}
+
+.ctrl{margin-bottom:1.15rem;}
+.ctrl label{
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.85rem;color:var(--on-deep-soft);margin-bottom:.35rem;
+}
+.ctrl label b{color:var(--spark);font-size:1.02rem;font-weight:600;}
+input[type=range]{width:100%;accent-color:var(--spark);cursor:pointer;height:1.4rem;}
+.cur{display:flex;gap:.3rem;margin-bottom:1.15rem;}
+.cur button{
+  appearance:none;cursor:pointer;font-family:"Bricolage Grotesque",sans-serif;font-weight:600;
+  background:rgba(255,255,255,.08);color:#C6CCE4;border:1px solid rgba(255,255,255,.16);
+  border-radius:6px;padding:.3rem .7rem;font-size:.9rem;
+}
+.cur button[aria-pressed="true"]{background:var(--spark);color:#16192B;border-color:var(--spark);}
+
+.readout{border-top:1px solid var(--deep-line);padding-top:1rem;margin-top:.4rem;}
+.readout .num{
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(1.9rem,5.5vw,2.6rem);
+  color:var(--spark);letter-spacing:-.03em;line-height:1;
+}
+.readout-note{color:#C6CCE4;font-size:.95rem;line-height:1.5;margin:.6rem 0 0;max-width:34ch;background:none;padding:0;border-radius:0;}
+.chart-hold svg{width:100%;height:auto;display:block;}
+.legend{display:flex;gap:1.2rem;font-family:"Bricolage Grotesque",sans-serif;font-size:.82rem;color:#9AA3C4;margin-top:.7rem;flex-wrap:wrap;}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:.35rem;vertical-align:baseline;}
+
+.draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 1.5s .25s ease-out forwards;}
+@keyframes draw{to{stroke-dashoffset:0;}}
+@media (prefers-reduced-motion:reduce){.draw{stroke-dashoffset:0;animation:none;}}
+
+/* ---------- myth blocks ---------- */
+.myth{border-left:4px solid var(--rule);padding:0 0 .2rem 1.4rem;margin:2.2rem 0;}
+.myth .said{
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.16rem;
+  color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--fall);
+  text-decoration-thickness:2px;margin:0 0 .55rem;max-width:44ch;
+}
+.myth .real{margin:0;}
+.myth .real b{font-weight:600;}
+
+/* ---------- timeline ---------- */
+.tl{margin:2rem 0 0;border-left:2px solid var(--rule);padding-left:1.5rem;}
+.tl-item{position:relative;padding-bottom:1.9rem;}
+.tl-item::before{
+  content:"";position:absolute;left:calc(-1.5rem - 6px);top:.55rem;
+  width:11px;height:11px;border-radius:50%;background:var(--surge);border:2px solid var(--paper);
+}
+.tl-item.crash::before{background:var(--fall);}
+.tl-year{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.05rem;color:var(--surge-text);}
+.tl-item.crash .tl-year{color:var(--fall-text);}
+.crashtag{
+  display:inline-block;vertical-align:.12em;margin-left:.45rem;
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;
+  color:var(--fall-text);background:var(--fall-tint);
+  border:1px solid var(--fall-text);border-radius:4px;padding:.05rem .32rem;
+}
+.tl-item h4{margin:.1rem 0 .3rem;font-size:1.1rem;}
+.tl-item p{margin:0;font-size:1rem;}
+
+/* ---------- exchange rows ---------- */
+.exch{border-top:1px solid var(--rule);padding:1.4rem 0;display:grid;grid-template-columns:180px 1fr;gap:1.6rem;}
+.exch:last-of-type{border-bottom:1px solid var(--rule);}
+@media(max-width:700px){.exch{grid-template-columns:1fr;gap:.4rem;}}
+.exch .name{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.12rem;line-height:1.2;}
+.exch .where{font-family:"Bricolage Grotesque",sans-serif;font-weight:400;font-size:.86rem;color:var(--ink-soft);margin-top:.2rem;}
+.exch p{margin:0;font-size:1.01rem;}
+.exch .type{
+  display:inline-block;font-family:"Bricolage Grotesque",sans-serif;font-size:.72rem;font-weight:600;
+  padding:.1rem .45rem;border-radius:4px;margin-top:.4rem;
+}
+.type.ix{background:var(--mist);color:var(--surge-text);}
+.type.ex{background:var(--spark-tint);color:var(--spark-text);}
+
+/* ---------- callouts ---------- */
+.note{
+  background:var(--mist);border-radius:12px;padding:1.2rem 1.4rem;margin:2rem 0;
+  max-width:var(--measure);
+}
+.note p:last-child{margin-bottom:0;}
+.note .head{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1rem;margin-bottom:.35rem;}
+
+.warn{
+  border:2px solid var(--fall);border-radius:12px;padding:1.2rem 1.4rem;margin:2rem 0;
+  max-width:var(--measure);background:var(--fall-tint);
+}
+.warn p:last-child{margin-bottom:0;}
+.warnlist{margin:.5rem 0 0;padding-left:1.15rem;max-width:var(--measure);}
+.warnlist li{margin-bottom:.5rem;}
+.warnlist li:last-child{margin-bottom:0;}
+.warn .head{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--fall-text);font-size:1rem;margin-bottom:.35rem;}
+
+/* ---------- definition list ---------- */
+.defs{margin:1.6rem 0;max-width:var(--measure);}
+.def{border-bottom:1px solid var(--rule);padding:.95rem 0;}
+.def dt{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.04rem;margin-bottom:.15rem;}
+.def dd{margin:0;color:var(--ink-soft);font-size:1rem;}
+
+/* ---------- table ---------- */
+.tbl{width:100%;border-collapse:collapse;margin:1.6rem 0;font-size:1rem;}
+.tbl th{
+  text-align:left;font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:.88rem;
+  color:var(--ink-soft);border-bottom:2px solid var(--ink);padding:.5rem .7rem .5rem 0;vertical-align:bottom;
+}
+.tbl td{border-bottom:1px solid var(--rule);padding:.75rem .7rem .75rem 0;vertical-align:top;}
+.tbl td:first-child{font-weight:500;}
+.scroller{overflow-x:auto;}
+
+/* ---------- stages (pump & dump) ---------- */
+.stage{display:grid;grid-template-columns:2.3rem 1fr;gap:1rem;margin:1.6rem 0;max-width:var(--measure);}
+.stage .n{
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.5rem;
+  color:var(--fall-text);line-height:1;padding-top:.1rem;
+}
+.stage h4{margin:0 0 .25rem;font-size:1.08rem;}
+.stage p{margin:0;font-size:1.01rem;}
+
+/* ---------- glossary ---------- */
+.search{
+  width:100%;max-width:440px;font-family:"Bricolage Grotesque",sans-serif;font-size:1rem;
+  padding:.75rem 1rem;border:2px solid var(--rule);border-radius:9px;background:var(--card);color:var(--ink);
+  margin-bottom:.6rem;
+}
+.search:focus{border-color:var(--surge);outline:none;}
+.hits{font-family:"Bricolage Grotesque",sans-serif;font-size:.85rem;color:var(--ink-soft);margin-bottom:1.4rem;}
+
+/* ---------- quiz ---------- */
+.q{border-top:1px solid var(--rule);padding:1.6rem 0;max-width:var(--measure);}
+.q .qt{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.1rem;margin-bottom:.8rem;}
+.opt{display:block;width:100%;text-align:left;background:var(--card);border:2px solid var(--rule);
+  border-radius:9px;padding:.65rem .9rem;margin-bottom:.45rem;cursor:pointer;
+  font-family:var(--body-face);font-size:1rem;color:var(--ink);transition:border-color .15s,background .15s;}
+.opt:hover:not(:disabled){border-color:var(--surge);}
+.opt:disabled{cursor:default;}
+.opt.right{border-color:var(--rise);background:var(--rise-tint);}
+.opt.wrong{border-color:var(--fall);background:var(--fall-tint);}
+.why{font-size:.98rem;color:var(--ink-soft);margin:.6rem 0 0;display:none;}
+.why.on{display:block;}
+.score{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.3rem;margin-top:2rem;}
+
+/* ---------- prediction game ---------- */
+.game{
+  background:var(--card);border:1px solid var(--rule);border-radius:14px;
+  padding:clamp(1.2rem,3.5vw,1.9rem);margin:2rem 0;
+}
+.game h3{margin:0 0 .3rem;font-size:1.24rem;}
+.game .sub{color:var(--ink-soft);font-size:.99rem;margin-bottom:1.3rem;max-width:56ch;}
+.tally{
+  display:flex;gap:1.8rem;flex-wrap:wrap;align-items:baseline;
+  border-top:1px solid var(--rule);padding-top:1rem;margin-top:1.1rem;
+}
+.tally div span{
+  display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:.78rem;color:var(--ink-soft);
+}
+.tally div b{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-.02em;}
+.gbtns{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.1rem;}
+.gbtn{
+  appearance:none;cursor:pointer;border:2px solid var(--ink);background:none;color:var(--ink);
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1rem;
+  padding:.6rem 1.5rem;border-radius:8px;
+}
+.gbtn:hover:not(:disabled){background:var(--ink);color:var(--paper);}
+.gbtn:disabled{opacity:.4;cursor:default;}
+.gbtn.up{border-color:var(--rise-text);color:var(--rise-text);}
+.gbtn.up:hover:not(:disabled){background:var(--rise-text);color:#fff;}
+.gbtn.down{border-color:var(--fall-text);color:var(--fall-text);}
+.gbtn.down:hover:not(:disabled){background:var(--fall-text);color:#fff;}
+.gbtn.quiet{border-width:1px;border-color:var(--rule);color:var(--ink-soft);font-weight:600;padding:.6rem 1rem;}
+.verdict{
+  font-family:"Bricolage Grotesque",sans-serif;font-size:1rem;margin:1.1rem 0 0;
+  min-height:1.5em;max-width:58ch;
+}
+
+/* ---------- journal ---------- */
+.journal{
+  background:var(--mist);border-radius:14px;padding:clamp(1.2rem,3.5vw,1.7rem);margin:2rem 0;
+}
+.journal h3{margin:0 0 .3rem;font-size:1.18rem;}
+.jrow{display:grid;grid-template-columns:1fr 170px 190px;gap:.7rem;margin:1.2rem 0 .8rem;}
+@media(max-width:720px){.jrow{grid-template-columns:1fr;}}
+.jrow input,.jrow select{
+  font-family:var(--body-face);font-size:1rem;padding:.62rem .8rem;
+  border:2px solid var(--rule);border-radius:8px;background:var(--card);color:var(--ink);width:100%;
+}
+.jrow input:focus,.jrow select:focus{border-color:var(--surge);outline:none;}
+.jlist{list-style:none;margin:1.2rem 0 0;padding:0;}
+.jlist li{
+  display:flex;gap:1rem;align-items:flex-start;justify-content:space-between;
+  border-top:1px solid var(--rule);padding:.8rem 0;font-size:1rem;
+}
+.jlist li p{margin:0;}
+.jmeta{
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.8rem;color:var(--ink-soft);
+  display:block;margin-top:.2rem;
+}
+.jdel{
+  appearance:none;background:none;border:0;cursor:pointer;color:var(--ink-soft);
+  font-family:"Bricolage Grotesque",sans-serif;font-size:.82rem;font-weight:600;
+  padding:.15rem .4rem;border-radius:5px;flex:none;
+}
+.jdel:hover{color:var(--fall-text);background:var(--fall-tint);}
+#j-out{
+  width:100%;min-height:130px;margin-top:.9rem;padding:.8rem;border-radius:8px;
+  border:2px solid var(--rule);background:var(--card);color:var(--ink);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;
+}
+
+/* ---------- resources ---------- */
+.res{border-top:1px solid var(--rule);padding:1.1rem 0;max-width:var(--measure);}
+.res:last-of-type{border-bottom:1px solid var(--rule);}
+.res .rname{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:.15rem;}
+.res p{margin:0;color:var(--ink-soft);font-size:1rem;}
+.free{
+  display:inline-block;font-family:"Bricolage Grotesque",sans-serif;font-size:.75rem;font-weight:600;
+  padding:.1rem .45rem;border-radius:4px;margin-left:.45rem;vertical-align:middle;
+  background:var(--rise-tint);color:var(--rise-text);
+}
+
+@media print{
+  .masthead,.drawer,.searchbox,.gear,.tabs,.jump,.gbtns,.skip,#j-tools{display:none !important;}
+  .panel{display:block !important;animation:none !important;padding:0 0 1.5rem;}
+  .panel + .panel{page-break-before:always;}
+  body{background:#fff;color:#000;font-size:11pt;}
+  .calc,.journal,.game,.note,.warn,footer{background:#fff !important;border:1px solid #bbb;}
+  .calc h3,.readout .num,.readout-note,.calc .sub,.ctrl label,.legend,
+  footer,footer p,footer h4{color:#000 !important;}
+  a{color:#000;text-decoration:underline;}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#444;}
+}
+
+/* ---------- footer ---------- */
+footer{background:var(--deep);color:var(--on-deep-soft);padding:3rem 0;font-size:.95rem;margin-top:2rem;}
+footer h4{color:var(--on-deep);font-size:1.05rem;margin:0 0 .5rem;}
+footer p{max-width:62ch;}
+footer a{color:var(--spark);}
+.foot-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+@media(max-width:700px){.foot-grid{grid-template-columns:1fr;gap:1.8rem;}}
+
+.jump{
+  appearance:none;border:2px solid var(--ink);background:none;color:var(--ink);cursor:pointer;
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:.95rem;
+  padding:.55rem 1.1rem;border-radius:8px;margin:.3rem .4rem .3rem 0;
+  transition:background .15s,color .15s;
+}
+.jump:hover{background:var(--ink);color:var(--paper);}
+.jump.primary{background:var(--spark);border-color:var(--spark);color:#16192B;}
+.jump.primary:hover{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to the content</a>
+<header class="masthead">
+  <div class="wrap">
+    <div class="mast-row">
+      <a class="logo" href="#start">
+        <svg width="37" height="27" viewBox="0 0 38 28" fill="none" aria-hidden="true">
+          <path d="M1 26.5H37" stroke="#fff" stroke-opacity=".3" stroke-width="1.3"/>
+          <rect x="2" y="19" width="5" height="6.5" rx="1.1" fill="#fff" fill-opacity=".22"/>
+          <rect x="9.5" y="15.5" width="5" height="10" rx="1.1" fill="#fff" fill-opacity=".3"/>
+          <rect x="17" y="12" width="5" height="13.5" rx="1.1" fill="#fff" fill-opacity=".38"/>
+          <rect x="24.5" y="8.5" width="5" height="17" rx="1.1" fill="#fff" fill-opacity=".46"/>
+          <path d="M1.5 24.5 L15.5 6.5 L12.5 14.5 L33.5 1 L20 20.5 L23 12.5 Z" fill="#FFB627"/>
+        </svg>
+        Stock Spark
+      </a>
+      <span class="tagline">Financial literacy, minus the jargon</span>
+      <div class="searchbox">
+        <svg class="sicon" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M10.8 10.8 15 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <input type="search" id="sq" placeholder="Search the whole site…" autocomplete="off"
+               aria-label="Search the whole site" aria-expanded="false" aria-controls="sres">
+        <div class="sresults" id="sres" role="listbox" aria-label="Search results"></div>
+      </div>
+      <button class="gear" id="gear" aria-expanded="false" aria-controls="drawer">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="8" cy="8" r="2.6" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M8 1v2.2M8 12.8V15M15 8h-2.2M3.2 8H1M12.9 3.1l-1.6 1.6M4.7 11.3l-1.6 1.6M12.9 12.9l-1.6-1.6M4.7 4.7 3.1 3.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        Settings
+      </button>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" aria-selected="true" data-p="start">Start here</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="myths">Myths</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="history">History</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="stocks">Stocks</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="dividends">Dividends</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="bonds">Bonds</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="markets">Markets</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="strategy">Strategy</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="risks">Risks &amp; scams</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="predict">Predictions</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="glossary">Glossary</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="quiz">Quiz</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="learn">Learn more</button>
+    </nav>
+  </div>
+  <div class="drawer" id="drawer">
+    <div class="wrap">
+      <div class="drawer-grid">
+        <div class="set">
+          <label id="l-theme">Appearance</label>
+          <div class="seg" role="group" aria-labelledby="l-theme">
+            <button data-set="theme" data-val="light" aria-pressed="true">Light</button>
+            <button data-set="theme" data-val="dark" aria-pressed="false">Dark</button>
+          </div>
+        </div>
+        <div class="set">
+          <label id="l-size">Text size</label>
+          <div class="seg" role="group" aria-labelledby="l-size">
+            <button data-set="size" data-val="md" aria-pressed="true">Standard</button>
+            <button data-set="size" data-val="lg" aria-pressed="false">Large</button>
+            <button data-set="size" data-val="xl" aria-pressed="false">Larger</button>
+          </div>
+        </div>
+        <div class="set">
+          <label id="l-face">Reading typeface</label>
+          <div class="seg" role="group" aria-labelledby="l-face">
+            <button data-set="face" data-val="serif" aria-pressed="true">Serif</button>
+            <button data-set="face" data-val="sans" aria-pressed="false">Sans</button>
+          </div>
+        </div>
+        <div class="set">
+          <label id="l-motion">Animation</label>
+          <div class="seg" role="group" aria-labelledby="l-motion">
+            <button data-set="motion" data-val="on" aria-pressed="true">On</button>
+            <button data-set="motion" data-val="off" aria-pressed="false">Off</button>
+          </div>
+        </div>
+        <div class="set">
+          <label id="l-cur">Currency</label>
+          <div class="seg" role="group" aria-labelledby="l-cur">
+            <button data-set="cur" data-val="£" aria-pressed="true">£</button>
+            <button data-set="cur" data-val="$" aria-pressed="false">$</button>
+            <button data-set="cur" data-val="€" aria-pressed="false">€</button>
+            <button data-set="cur" data-val="R" aria-pressed="false">R</button>
+          </div>
+        </div>
+      </div>
+      <div class="drawer-foot">
+        <p>Settings apply while this tab is open. They reset if you reload the page, because this site stores nothing about you — no accounts, no cookies, no tracking.</p>
+        <button id="reset-set">Reset to defaults</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main" tabindex="-1">
+
+<!-- ============ START ============ -->
+<section class="panel on" id="start" role="tabpanel">
+  <div class="hero">
+    <h1>The market <span class="strike">isn't</span> for people like you.</h1>
+    <p class="lede">Most people leave school knowing how to find the area of a triangle, and not knowing what a share is. This site fixes the second one. It takes about forty minutes to read the whole thing.</p>
+    <button class="jump primary" data-go="stocks">Start with the basics</button>
+    <button class="jump" data-go="risks">Show me the scams first</button>
+  </div>
+
+  <div class="calc">
+    <h3>Why people go on about starting early</h3>
+    <p class="sub">Drag the sliders. The gap between the two lines is money you never earned by working — it's the return earning its own return. That gap is the entire reason anyone bothers.</p>
+    <div class="calc-grid">
+      <div>
+        <div class="cur" role="group" aria-label="Currency">
+          <button data-cur="£" aria-pressed="true">£</button>
+          <button data-cur="$" aria-pressed="false">$</button>
+          <button data-cur="€" aria-pressed="false">€</button>
+          <button data-cur="R" aria-pressed="false">R</button>
+        </div>
+        <div class="ctrl">
+          <label for="s-amt">Put in each month <b id="v-amt">50</b></label>
+          <input type="range" id="s-amt" min="10" max="500" step="10" value="50">
+        </div>
+        <div class="ctrl">
+          <label for="s-yrs">For this many years <b id="v-yrs">40</b></label>
+          <input type="range" id="s-yrs" min="5" max="50" step="1" value="40">
+        </div>
+        <div class="ctrl">
+          <label for="s-ret">Average yearly return <b id="v-ret">5%</b></label>
+          <input type="range" id="s-ret" min="1" max="12" step="0.5" value="5">
+        </div>
+        <div class="readout">
+          <div class="num" id="v-total">£76,301</div>
+          <p class="readout-note" id="v-note">You paid in £24,000. The other £52,301 is growth.</p>
+        </div>
+      </div>
+      <div class="chart-hold">
+        <svg id="chart" viewBox="0 0 560 330" role="img" aria-labelledby="chart-t">
+          <title id="chart-t">A chart comparing money paid in against total value over time</title>
+          <g id="grid"></g>
+          <path id="line-paid" fill="none" stroke="#9AA3C4" stroke-width="2.5" stroke-dasharray="5 5"/>
+          <path id="area-tot" fill="rgba(255,182,39,.15)"/>
+          <path id="line-tot" class="draw" fill="none" stroke="#FFB627" stroke-width="3.5" stroke-linecap="round"/>
+          <g id="axis"></g>
+        </svg>
+        <div class="legend">
+          <span><i style="background:#FFB627"></i>What it could be worth</span>
+          <span><i style="background:#9AA3C4"></i>What you actually paid in</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <div class="head">That number is not a promise</div>
+    <p>Global shares have returned about <b>5.2% a year after inflation</b> since 1900, measured across more than twenty countries — so the slider starts near there. But that is an <em>average</em>, not a schedule. Real returns arrive as +22%, −18%, +4%, −31%, +19%, and some ten-year stretches have delivered nothing at all. The US has beaten 5.2% over that period and several countries have done far worse, which is why you can move the slider yourself. Nobody can tell you what the next forty years will do, and anyone who says they can is selling something.</p>
+  </div>
+
+  <h3>The whole site in six sentences</h3>
+  <div class="defs">
+    <div class="def"><dt>A share is a slice of a real company.</dt><dd>Own one and you own a genuine, if tiny, piece of that business — its factories, its brand, its profits.</dd></div>
+    <div class="def"><dt>A bond is a loan you make to a government or company.</dt><dd>They pay you interest and give your money back on an agreed date. Duller than shares, and usually safer.</dd></div>
+    <div class="def"><dt>The stock market is just the second-hand shop for those slices.</dt><dd>Buyers and sellers agreeing prices, millions of times a day.</dd></div>
+    <div class="def"><dt>Prices move because opinions about the future move.</dt><dd>Not because of some hidden truth you could find if you were clever enough.</dd></div>
+    <div class="def"><dt>Over decades, owning lots of companies has beaten holding cash.</dt><dd>Over months, it's close to a coin toss. Your time horizon changes almost everything.</dd></div>
+    <div class="def"><dt>Most money lost by beginners is lost to fees, panic and fraud.</dt><dd>Not to picking the wrong company. This is the least glamorous and most useful thing on this page.</dd></div>
+  </div>
+
+  <div class="note">
+    <div class="head">What this site is and isn't</div>
+    <p>Stock Spark is a school project built to explain how markets work. It is education, not financial advice — it can't know your situation, your debts or your goals, and it isn't regulated to advise you. Nothing here is a recommendation to buy or sell anything. Before you invest real money, read widely and talk to someone qualified and regulated in your country.</p>
+  </div>
+</section>
+
+<!-- ============ MYTHS ============ -->
+<section class="panel" id="myths" role="tabpanel">
+  <p class="kicker">Stigmas and preconceptions</p>
+  <h2 class="big">Nine things people believe about the market</h2>
+  <p class="lede">Some are flat wrong. Some are half-true in ways that matter. Pretending the half-true ones are myths is how people get hurt, so they're marked honestly.</p>
+
+  <div class="myth">
+    <p class="said">"Investing is just gambling."</p>
+    <p class="real"><b>Half-true, and the half matters.</b> In a casino the odds are fixed against you and the total pot never grows — one person's win is another's loss. Owning shares in companies is different: those businesses actually make things and earn profits, so the pot itself can grow over time. But <em>how</em> you invest decides which one you're doing. Buying a spread of hundreds of companies and holding for twenty years is ownership. Buying a coin your friend hyped on Friday and selling Monday is gambling with extra steps. Same market, completely different activity.</p>
+  </div>
+
+  <div class="myth">
+    <p class="said">"You need thousands of pounds to start."</p>
+    <p class="real"><b>Not any more.</b> Fractional shares let you buy a slice of a share, so a company trading at £400 is reachable with £10. Plenty of regulated platforms have no minimum. The real barrier isn't the sum, it's that small amounts feel pointless — which is exactly the intuition the chart on the first tab is designed to break.</p>
+  </div>
+
+  <div class="myth">
+    <p class="said">"It's for rich old men in suits."</p>
+    <p class="real"><b>It was, and the image stuck.</b> For most of its history the market genuinely was gated by brokers, phone calls and high fees. That changed within living memory. What hasn't fully changed is who feels welcome — which is a marketing and education problem, not a rule. The mechanics do not check your age or your postcode.</p>
+  </div>
+
+  <div class="myth">
+    <p class="said">"You could lose everything overnight."</p>
+    <p class="real"><b>True for one company, misleading for a market.</b> A single business can go bankrupt and take your entire stake with it — this is real and it happens. A fund holding hundreds or thousands of companies across many countries has never gone to zero, because that would require every one of them failing at once. The way people actually lose everything is by putting it all in one thing, borrowing to invest, or handing it to a fraud.</p>
+  </div>
+
+  <div class="myth">
+    <p class="said">"It's rigged against ordinary people."</p>
+    <p class="real"><b>Partly, but not in the way it's usually meant.</b> Professionals genuinely have faster data, cheaper trading and better information than you. If your plan is to out-trade them minute by minute, you will lose. What they can't take from you is time — they answer to clients who want results this quarter, and you don't. A cheap index fund — a single fund that simply buys every company in a market rather than picking — held for thirty years has beaten most professional fund managers over the same period, and it requires no skill at all.</p>
+  </div>
+
+  <div class="myth">
+    <p class="said">"You need to be good at maths."</p>
+    <p class="real"><b>No.</b> The arithmetic is addition, percentages and patience. Nobel-winning economists have picked bad investments and disciplined people with no qualifications have done fine. Temperament beats cleverness here more reliably than in almost any other field.</p>
+  </div>
+
+  <div class="myth">
+    <p class="said">"I'm too young to think about this."</p>
+    <p class="real"><b>Backwards.</b> Being young is the single largest advantage available in investing, and it's the only one that can't be bought. Every year you wait is a year removed from the far end of the curve, where the growth is steepest. A 20-year-old investing for ten years and then stopping entirely can end up ahead of a 35-year-old who pays in for thirty. Time does more work than money.</p>
+  </div>
+
+  <div class="myth">
+    <p class="said">"Investing is basically a get-rich-quick thing."</p>
+    <p class="real"><b>The opposite, and the confusion is deliberate.</b> Real investing is slow enough to be boring. The people presenting it as fast are usually selling a course, a signals group, or a coin they already own. Ask why someone with a genuine money-printing method would spend their time recruiting strangers.</p>
+  </div>
+
+  <div class="myth">
+    <p class="said">"If I don't understand it, I shouldn't touch it."</p>
+    <p class="real"><b>Actually a good instinct — keep it.</b> This is the one preconception worth holding on to. Not understanding something is an excellent reason not to put money in it. The mistake is concluding you <em>can't</em> understand it, when the truth is nobody taught you. That's a curriculum failure, not a limit on you.</p>
+  </div>
+
+  <h3>Why the stigma exists at all</h3>
+  <p>Three things feed it. Films and news only cover markets when they explode, so the crashes are famous and the boring decades aren't. Social media rewards whoever posts the most extreme number, which means the loudest voices are structurally the least reliable. And schools mostly skip it, so people arrive at adulthood with the film version and nothing to correct it.</p>
+  <p>None of that makes the market safe. It just means the fear people carry is shaped by the most dramatic stories rather than the most common ones.</p>
+  <button class="jump" data-go="history">See what actually happened, decade by decade</button>
+</section>
+
+<!-- ============ HISTORY ============ -->
+<section class="panel" id="history" role="tabpanel">
+  <p class="kicker">History of the market</p>
+  <h2 class="big">Four hundred years of the same mistake</h2>
+  <p class="lede">Read the timeline and a pattern shows up: a new thing appears, people decide it can only go up, it doesn't, everyone swears never again, and roughly one generation later it happens again. Milestones have blue dots; falls are marked in red and labelled “crash”.</p>
+
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-year">1602</div>
+      <h4>The first company anyone could own</h4>
+      <p>The Dutch East India Company needed more money than any single group of merchants could raise, so it sold shares to the public in Amsterdam — and crucially, let people resell them to each other. That resale market is the ancestor of every exchange on the Markets tab.</p>
+    </div>
+    <div class="tl-item crash">
+      <div class="tl-year">1637 <span class="crashtag">Crash</span></div>
+      <h4>Tulip mania</h4>
+      <p>Dutch tulip bulb contracts reached extraordinary prices before collapsing. Historians argue about how widespread the damage really was, but it survives as the original example of people buying something purely because the price was rising.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1698</div>
+      <h4>London starts in a coffee house</h4>
+      <p>Brokers were reportedly thrown out of the Royal Exchange for being rowdy, so they did business in Jonathan's Coffee House, where John Castaing posted a list of stock and commodity prices. The London Stock Exchange formalised in 1801.</p>
+    </div>
+    <div class="tl-item crash">
+      <div class="tl-year">1720 <span class="crashtag">Crash</span></div>
+      <h4>The South Sea Bubble</h4>
+      <p>A company with monopoly trading rights and very little actual trade saw its shares soar and collapse within a year. Isaac Newton lost a large sum, and is supposed to have said he could calculate the motion of the stars but not the madness of people.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1792</div>
+      <h4>Wall Street, under a tree</h4>
+      <p>Twenty-four brokers signed the Buttonwood Agreement in New York, setting commission rates and agreeing to trade with each other first. It grew into the New York Stock Exchange.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1887</div>
+      <h4>Johannesburg opens for gold</h4>
+      <p>Gold was found on the Witwatersrand in 1886, creating a sudden need to fund mining companies, and the Johannesburg Stock Exchange opened on 8 November the following year. It is now the largest exchange in Africa.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1896</div>
+      <h4>Someone invents the market average</h4>
+      <p>Charles Dow published an average of 12 industrial stocks so people could describe "the market" in one number. The Dow Jones Industrial Average now holds 30 companies and is still quoted daily, despite a calculation method most economists consider outdated.</p>
+    </div>
+    <div class="tl-item crash">
+      <div class="tl-year">1929 <span class="crashtag">Crash</span></div>
+      <h4>The Wall Street Crash</h4>
+      <p>After a decade of rising prices and heavy borrowing to buy shares, the market fell over several days in October and kept falling for years. It contributed to the Great Depression, and the US market did not return to its 1929 peak until 1954. Every later fear of the stock market is descended from this one.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1971</div>
+      <h4>The market leaves the trading floor</h4>
+      <p>Nasdaq launched as the world's first electronic stock market — no shouting, no paper, just a network showing quotes. Almost all trading today is electronic, which is why exchange floors now look like television sets.</p>
+    </div>
+    <div class="tl-item crash">
+      <div class="tl-year">1987 <span class="crashtag">Crash</span></div>
+      <h4>Black Monday</h4>
+      <p>On 19 October the Dow fell about 23% in a single day — still its worst one-day percentage drop. Automated selling programs are widely blamed for accelerating it. Notably, the US market finished the year roughly flat.</p>
+    </div>
+    <div class="tl-item crash">
+      <div class="tl-year">2000 <span class="crashtag">Crash</span></div>
+      <h4>The dot-com bubble</h4>
+      <p>Internet companies with no profits, and sometimes no product, reached enormous valuations. The Nasdaq peaked in March 2000 and lost around three-quarters of its value over the next two and a half years. Some of the survivors — Amazon among them — became the biggest companies on earth, which is why "the technology was real" and "the price was insane" can both be true at once.</p>
+    </div>
+    <div class="tl-item crash">
+      <div class="tl-year">2008 <span class="crashtag">Crash</span></div>
+      <h4>The global financial crisis</h4>
+      <p>Mortgages — long-term loans used to buy a house — given to people who couldn't repay them were bundled into products that banks misjudged as safe. When US house prices fell the damage spread through the whole financial system, Lehman Brothers collapsed in September, and markets fell worldwide. This is why banks now face far stricter rules on how much of their own money they must hold.</p>
+    </div>
+    <div class="tl-item crash">
+      <div class="tl-year">2020 <span class="crashtag">Crash</span></div>
+      <h4>The Covid crash</h4>
+      <p>In February and March markets fell faster than in any previous crash on record as countries locked down. They then recovered unusually quickly, helped by enormous government and central bank support. Anyone who sold at the bottom locked in the loss; anyone who did nothing was back to even within months.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2021</div>
+      <h4>GameStop and the meme stock</h4>
+      <p>Ordinary individual investors — "retail" investors, as opposed to professional firms — coordinating on Reddit drove up shares in a struggling video game shop, causing heavy losses for professional funds betting against it. It was genuinely a moment of ordinary people moving a market — and also a moment where many latecomers bought at the top and lost badly. Both halves of that sentence are the lesson.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="head">What the timeline is actually showing</div>
+    <p>Crashes are normal features of markets, not malfunctions. Roughly speaking, a fall of 10% or more has historically shown up about once a year, and a fall of 20% or more about every three and a half years — there have been 27 of those since 1928. Every one of them felt like the end at the time, and every one of them is a small notch on a long-term chart. That's not a promise the next one recovers — it's a reason not to build a plan that assumes calm.</p>
+  </div>
+</section>
+
+<!-- ============ STOCKS ============ -->
+<section class="panel" id="stocks" role="tabpanel">
+  <p class="kicker">Definitions and an introduction</p>
+  <h2 class="big">Stocks and shares</h2>
+  <p class="lede">If you read only one tab, read this one. Everything else on the site is built on what follows.</p>
+
+  <h3>What you're actually buying</h3>
+  <p>A company that wants to grow needs money. It can borrow it — that's the Bonds tab — or it can sell off pieces of itself. Those pieces are <b>shares</b>. Buy one and you are a part-owner of that business. Not a customer, not a lender: an owner, with a claim on its profits and, usually, a vote at its annual meeting.</p>
+  <p>"Stock" and "shares" are used almost interchangeably. Strictly, stock is the general concept of company ownership and a share is one unit of it. Nobody will correct you.</p>
+
+  <h3>Where shares come from, and where you buy them</h3>
+  <p>When a private company first sells shares to the public it's called an <b>IPO</b> — an initial public offering. That's the <b>primary market</b>, and the money goes to the company. After that, shares change hands between investors on the <b>secondary market</b>, which is what people mean by "the stock market". Buying Apple shares today sends your money to whoever sold them, not to Apple.</p>
+  <p>This surprises people, and it's worth sitting with: the daily market is mostly investors trading with each other over the price of things that already exist.</p>
+
+  <h3>How the price gets set</h3>
+  <p>There's no official price. At any moment there's a highest price someone will pay — the <b>bid</b> — and a lowest price someone will accept — the <b>ask</b>. The gap between them is the <b>spread</b>, and it's a hidden cost you pay on every trade. A trade happens when the two meet, and that becomes "the price" until the next one.</p>
+  <p>So a share price isn't a measure of what a company is worth. It's a live tally of what people currently believe about its future — which is why prices jump on rumours and barely move on good results that everyone already expected.</p>
+
+  <div class="note">
+    <div class="head">The mistake almost every beginner makes</div>
+    <p>A £3 share is not "cheaper" than a £900 share. Price per share depends entirely on how many shares exist. What matters is <b>market capitalisation</b> — share price multiplied by the number of shares — which is the value of the whole company. A company can split one £900 share into nine £100 shares and nothing has changed, exactly like getting change for a note. If you take one thing from this tab, take this one.</p>
+  </div>
+
+  <h3>The two ways shares make you money</h3>
+  <div class="defs">
+    <div class="def"><dt>Capital growth</dt><dd>The share is worth more than you paid, and you sell. Until you sell it's a paper gain — real enough to see, not real enough to spend.</dd></div>
+    <div class="def"><dt>Dividends</dt><dd>The company hands out part of its profit to shareholders while you keep holding. This has its own tab, because it's where compounding really lives.</dd></div>
+  </div>
+
+  <h3>Words you'll meet in week one</h3>
+  <div class="scroller">
+  <table class="tbl">
+    <thead><tr><th>Term</th><th>What it means</th><th>Why you care</th></tr></thead>
+    <tbody>
+      <tr><td>Market cap</td><td>Share price × shares in existence</td><td>The real size of a company. Large caps are steadier; small caps swing harder.</td></tr>
+      <tr><td>Volume</td><td>How many shares traded today</td><td>Low volume means it's hard to sell in a hurry without moving the price against yourself.</td></tr>
+      <tr><td>Liquidity</td><td>How easily you can sell at a fair price</td><td>Big companies are liquid. Obscure ones aren't — a fact scammers rely on.</td></tr>
+      <tr><td>Volatility</td><td>How violently the price swings</td><td>High volatility isn't the same as high risk, but it's the thing that makes people panic-sell.</td></tr>
+      <tr><td>P/E ratio</td><td>Price ÷ earnings per share, which is the company's yearly profit divided by how many shares exist</td><td>Roughly, how many years of current profits you're paying for. Useful for comparing similar companies, meaningless across different industries.</td></tr>
+      <tr><td>Blue chip</td><td>A large, long-established company</td><td>The boring end of the market. Boring is a compliment here.</td></tr>
+      <tr><td>Bull market</td><td>A sustained period of rising prices</td><td>Feels like skill. Usually isn't.</td></tr>
+      <tr><td>Bear market</td><td>A fall of 20% or more from the peak</td><td>Feels permanent. Historically hasn't been.</td></tr>
+      <tr><td>Broker</td><td>The regulated firm you buy through</td><td>Check it's registered with your country's regulator before sending it a penny.</td></tr>
+      <tr><td>Portfolio</td><td>Everything you own, together</td><td>Judge the whole thing, not your worst holding.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Two order types worth knowing before you click anything</h3>
+  <div class="defs">
+    <div class="def"><dt>Market order</dt><dd>"Buy it now at whatever the going price is." Fast, and occasionally expensive in a fast-moving or thinly traded stock.</dd></div>
+    <div class="def"><dt>Limit order</dt><dd>"Buy it only at £42 or less." You control the price, but it may never fill. Generally the safer habit.</dd></div>
+  </div>
+
+  <h3>Funds: the thing most people should understand first</h3>
+  <p>Picking individual companies is the version of investing that television shows you, and it's the hardest. The alternative is a <b>fund</b>: a single purchase that spreads your money across many companies at once.</p>
+  <p>An <b>index fund</b> or <b>ETF</b> tracks a whole market automatically — buy one that follows the S&amp;P 500 and you own a sliver of 500 large American companies. No stock picking, very low fees, and if one company collapses it's a scratch rather than a wound. Over long periods, most professional fund managers charging you to pick cleverly have failed to beat exactly this. It's the least exciting product in finance, and it barely existed when your grandparents were your age.</p>
+  <button class="jump" data-go="dividends">Next: dividends</button>
+</section>
+
+<!-- ============ DIVIDENDS ============ -->
+<section class="panel" id="dividends" role="tabpanel">
+  <p class="kicker">Getting paid to own things</p>
+  <h2 class="big">Dividends</h2>
+  <p class="lede">A dividend is a share of a company's profit, paid to its owners. If you own the shares, you are one of the owners. It arrives whether or not you do anything.</p>
+
+  <h3>Why companies pay them</h3>
+  <p>A company that makes a profit has a choice: reinvest it in growing the business, or hand some to shareholders. Young, fast-growing companies usually reinvest everything and pay nothing — Amazon has never paid a dividend in its entire history as a public company. Mature companies in steady industries like utilities, banks and supermarkets tend to pay regularly, because they have more cash than they have obvious ways to grow.</p>
+  <p>Neither approach is better. A company paying no dividend isn't stingy, and one paying a large dividend isn't generous — they're at different points in their life.</p>
+
+  <h3>The one number people quote</h3>
+  <p><b>Dividend yield</b> is the annual dividend divided by the share price, as a percentage. A £40 share paying £2 a year yields 5%.</p>
+  <p>Notice what that fraction does. If the share price <em>falls</em> and the dividend stays put, the yield goes <em>up</em>. So an unusually high yield is often not a generous company — it's a company whose share price has collapsed because the market expects the dividend to be cut. This is called a <b>yield trap</b>, and chasing it is one of the most common ways new investors walk directly into a falling business.</p>
+
+  <div class="note">
+    <div class="head">A better second number</div>
+    <p>The <b>payout ratio</b> is the proportion of profit being paid out as dividends. A company paying out 40% of its profits has room to keep paying if things get worse. A company paying out 110% is paying you with borrowed money or savings, and that cannot continue. Yield tells you what you get; payout ratio tells you whether you'll keep getting it.</p>
+  </div>
+
+  <h3>The four dates, and the one that confuses everyone</h3>
+  <div class="stage"><div class="n" style="color:var(--surge-text)">1</div><div><h4>Declaration date</h4><p>The company announces it's paying a dividend, how much, and when.</p></div></div>
+  <div class="stage"><div class="n" style="color:var(--surge-text)">2</div><div><h4>Ex-dividend date</h4><p>The cut-off. Buy on or after this date and you do <em>not</em> get this payment — the seller does. This is the one that catches people out.</p></div></div>
+  <div class="stage"><div class="n" style="color:var(--surge-text)">3</div><div><h4>Record date</h4><p>The company checks its list of who owns shares and therefore who gets paid.</p></div></div>
+  <div class="stage"><div class="n" style="color:var(--surge-text)">4</div><div><h4>Payment date</h4><p>The money lands in your account.</p></div></div>
+
+  <div class="warn">
+    <div class="head">There is no free dividend</div>
+    <p>On the ex-dividend date a share price typically drops by roughly the amount of the dividend, because the company is about to be that much poorer in cash. So buying a share the day before a big dividend to "catch" it doesn't work — you get £2 in cash and your share is worth about £2 less. If a strategy sounds like free money in a market with millions of participants, assume it's already priced in.</p>
+  </div>
+
+  <h3>Reinvesting: where the curve on the front page comes from</h3>
+  <p>You can take dividends as cash, or automatically buy more shares with them. Do the second and those new shares pay dividends too, which buy more shares, which pay dividends. This is <b>compounding</b>, and over long periods reinvested dividends have accounted for a very large share of total stock market returns — in many long-run studies, roughly half or more.</p>
+  <p>It's also why the chart on the first tab bends upward instead of running in a straight line. Nothing dramatic happens in year three. A great deal happens in year thirty.</p>
+
+  <h3>Three things to keep in mind</h3>
+  <div class="defs">
+    <div class="def"><dt>Dividends are not guaranteed</dt><dd>They're a decision, not a contract. Many were cut or suspended in 2020, including from companies that had paid for decades.</dd></div>
+    <div class="def"><dt>They're usually taxable</dt><dd>Rules vary enormously by country, and tax-sheltered accounts often exist for exactly this. Worth checking yours before you're surprised.</dd></div>
+    <div class="def"><dt>A dividend doesn't make a bad company good</dt><dd>Being paid 6% a year by a business losing 20% of its value is not winning.</dd></div>
+  </div>
+  <button class="jump" data-go="bonds">Next: bonds</button>
+</section>
+
+<!-- ============ BONDS ============ -->
+<section class="panel" id="bonds" role="tabpanel">
+  <p class="kicker">The other half of the market</p>
+  <h2 class="big">Bonds</h2>
+  <p class="lede">Shares make you an owner. Bonds make you a lender. Almost nobody finds bonds exciting, which is roughly the point of them.</p>
+
+  <h3>How a bond works</h3>
+  <p>A government or company needs to borrow. It issues a bond: you hand over money now, it pays you a fixed rate of interest for an agreed period, and on the final date it returns your original sum. That's it. You have no ownership and no vote — you're a creditor, meaning someone the company owes money to.</p>
+  <div class="defs">
+    <div class="def"><dt>Face value (or par)</dt><dd>The sum repaid at the end, often £100 or £1,000 per bond.</dd></div>
+    <div class="def"><dt>Coupon</dt><dd>The interest rate paid, usually annually or twice a year. The name comes from paper bonds with tear-off slips.</dd></div>
+    <div class="def"><dt>Maturity</dt><dd>The date you get your money back. Can be months or thirty-plus years.</dd></div>
+    <div class="def"><dt>Yield</dt><dd>Your actual return given what you paid — which is often not face value, because bonds are traded second-hand like shares.</dd></div>
+  </div>
+
+  <h3>The thing about bonds that isn't obvious</h3>
+  <p>Bond prices and interest rates move in opposite directions. It sounds like finance trivia and it's the whole game.</p>
+  <p>Say you own a bond paying 2%. Interest rates then rise and new bonds are issued paying 5%. Nobody wants your 2% bond at full price when they can have 5% instead — so if you want to sell before maturity, you must accept less. Your bond's price falls until its effective return matches what's available elsewhere. It works in reverse too: when rates fall, existing higher-paying bonds become more valuable.</p>
+  <p>This is why 2022 was so unpleasant for cautious investors. Rates rose sharply, and bonds — the supposedly safe part — fell hard at the same time as shares.</p>
+
+  <h3>Who's borrowing, and how risky is it</h3>
+  <div class="scroller">
+  <table class="tbl">
+    <thead><tr><th>Type</th><th>Who owes you</th><th>Rough risk</th></tr></thead>
+    <tbody>
+      <tr><td>Government bonds</td><td>A national government — gilts in the UK, Treasuries in the US, government bonds in South Africa</td><td>Lowest, for stable wealthy countries. Not zero.</td></tr>
+      <tr><td>Investment grade corporate</td><td>Large, financially solid companies</td><td>Low to moderate. Pays a bit more than government.</td></tr>
+      <tr><td>High yield ("junk")</td><td>Companies with shakier finances</td><td>High. The generous rate is compensation for real default risk.</td></tr>
+      <tr><td>Emerging market</td><td>Governments and firms in developing economies</td><td>Varies widely. Currency swings add another layer.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Ratings agencies grade borrowers on a scale from AAA downwards. Anything rated BBB− or above is "investment grade"; below that is high yield. Treat ratings as a useful starting opinion, not a verdict — they rated a lot of 2008's mortgage products very highly.</p>
+
+  <h3>Three risks, because "safe" is doing a lot of work</h3>
+  <div class="defs">
+    <div class="def"><dt>Default risk</dt><dd>The borrower doesn't pay. Rare for stable governments, real for companies.</dd></div>
+    <div class="def"><dt>Interest rate risk</dt><dd>Rates rise, your bond's market value falls. Only bites if you sell before maturity.</dd></div>
+    <div class="def"><dt>Inflation risk</dt><dd>The quiet one. A fixed 3% is a loss in purchasing power when inflation is 6%. Your money comes back intact and buys less.</dd></div>
+  </div>
+
+  <h3>Why anyone holds them</h3>
+  <p>Bonds usually return less than shares over long periods. What they offer instead is predictability, an income stream, and the tendency — not the guarantee — to hold up better when share markets fall. That's why portfolios often mix the two, and why the mix typically shifts toward bonds as someone nears the point of actually needing the money. A 19-year-old with forty years ahead and a 64-year-old retiring next spring have genuinely different problems.</p>
+  <button class="jump" data-go="markets">Next: exchanges and indexes</button>
+</section>
+
+<!-- ============ MARKETS ============ -->
+<section class="panel" id="markets" role="tabpanel">
+  <p class="kicker">Exchanges and indexes</p>
+  <h2 class="big">The places, and the scoreboards</h2>
+  <p class="lede">These two get mixed up constantly, including by the news. Sorting them out takes one paragraph and makes market coverage suddenly readable.</p>
+
+  <div class="note">
+    <div class="head">An exchange is a venue. An index is a number.</div>
+    <p>The <b>London Stock Exchange</b> is a marketplace where shares change hands — a place. The <b>FTSE 100</b> is a calculation that tracks 100 of the companies listed there — a scoreboard. You can buy shares on an exchange. You cannot buy an index, only a fund that copies it. So "the Nasdaq fell today" is doing double duty, because Nasdaq is both an exchange and an index that shares its name. The S&amp;P 500 is only an index; it isn't a place at all.</p>
+  </div>
+
+  <h3>Major exchanges</h3>
+  <div class="exch">
+    <div><div class="name">New York Stock Exchange</div><div class="where">New York · founded 1792</div><span class="type ex">Exchange</span></div>
+    <p>The largest exchange in the world by the total value of the companies listed on it, and the home of a great many long-established American businesses. Still has a physical trading floor, though nearly all real trading is electronic — the floor now serves mainly as a broadcast backdrop.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">Nasdaq</div><div class="where">New York · founded 1971</div><span class="type ex">Exchange</span></div>
+    <p>The first fully electronic stock market, with no trading floor by design, and second only to the NYSE by the total value of the companies listed on it. Heavily weighted toward technology, which makes it more volatile than the NYSE — it rose furthest in the dot-com boom and fell furthest afterwards.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">London Stock Exchange</div><div class="where">London · roots to 1698</div><span class="type ex">Exchange</span></div>
+    <p>One of the oldest exchanges still running, descended from brokers meeting in coffee houses. Europe's most internationally weighted market, with a large share of listings in energy, mining, banking and pharmaceuticals rather than technology.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">Japan Exchange Group</div><div class="where">Tokyo · exchange from 1878, group from 2013</div><span class="type ex">Exchange</span></div>
+    <p>Japan's main exchange and one of the largest in Asia, formed when the Tokyo and Osaka exchanges merged in 2013. Japan's market spent decades below its 1989 peak — a useful corrective to anyone who assumes markets always recover quickly.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">Johannesburg Stock Exchange</div><div class="where">Johannesburg · founded 1887</div><span class="type ex">Exchange</span></div>
+    <p>Africa's largest exchange, created to fund the mining companies of the Witwatersrand gold rush. Still weighted toward mining and resources alongside major banks and retailers, and closely watched as a gauge of the wider African economy.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">Shanghai &amp; Hong Kong</div><div class="where">China · 1990 and 1891</div><span class="type ex">Exchanges</span></div>
+    <p>Shanghai is the largest exchange in Asia by the total value of the companies listed on it. Hong Kong has long been the main route for international investors into Chinese companies; mainland exchanges have historically had tighter restrictions on foreign participation.</p>
+  </div>
+
+  <h3>Major indexes</h3>
+  <div class="exch">
+    <div><div class="name">S&amp;P 500</div><div class="where">United States · from 1957</div><span class="type ix">Index</span></div>
+    <p>500 of the largest US public companies, weighted by size — so the biggest handful influence it far more than the smallest. Widely treated as the default measure of the American market, and the most commonly tracked index in the world.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">FTSE 100</div><div class="where">United Kingdom · from 1984</div><span class="type ix">Index</span></div>
+    <p>The 100 largest companies on the London Stock Exchange by market value, known as the "Footsie". It started at 1,000 points in January 1984. A quirk worth knowing: most of its members earn the majority of their revenue abroad, so it often reacts more to the pound and global commodity prices than to the UK economy.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">Dow Jones Industrial Average</div><div class="where">United States · from 1896</div><span class="type ix">Index</span></div>
+    <p>Just 30 large US companies, and the oldest index still quoted. It's <em>price-weighted</em>, meaning a company with a high share price sways it more than a company that's simply bigger — an approach almost nobody would design today. Famous rather than representative.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">Nasdaq Composite</div><div class="where">United States · from 1971</div><span class="type ix">Index</span></div>
+    <p>Tracks essentially everything listed on Nasdaq — thousands of companies, heavily tilted toward technology. When headlines say tech had a bad day, this is usually the number they mean.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">Nikkei 225</div><div class="where">Japan · from 1950</div><span class="type ix">Index</span></div>
+    <p>225 major Japanese companies. Also price-weighted, like the Dow. Its 1989 peak and the long decline that followed is the standard case study in what a bubble can cost a country.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">JSE Top 40 / All Share</div><div class="where">South Africa · from 2002</div><span class="type ix">Index</span></div>
+    <p>Both launched in their current form in June 2002, though the exchange had its own indexes long before that. The Top 40 tracks the largest companies on the Johannesburg exchange; the All Share covers a far broader sweep of the market. Both lean heavily on mining and resources, so they move with global commodity prices as much as with domestic news.</p>
+  </div>
+  <div class="exch">
+    <div><div class="name">MSCI World / FTSE All-World</div><div class="where">Global · since the late 1960s</div><span class="type ix">Index</span></div>
+    <p>Thousands of companies across dozens of countries in a single number. Less famous than the others and arguably more useful, because funds tracking these are how an ordinary person owns a slice of the entire world economy in one purchase.</p>
+  </div>
+
+  <h3>How trading actually happens now</h3>
+  <p>Almost none of it looks like the films. Orders are matched by computers in milliseconds, and a large share of volume comes from algorithms rather than people. Exchanges have opening hours — London roughly 8am to 4.30pm, New York 9.30am to 4pm local time — which is why a company can announce disastrous news at 9pm and its shares only fall the next morning.</p>
+  <p>Most exchanges also have <b>circuit breakers</b>: automatic pauses that halt trading if prices fall too far too fast. They were introduced after 1987 to give humans a moment to think, and they were triggered several times during the March 2020 crash.</p>
+  <button class="jump" data-go="strategy">Next: strategy</button>
+</section>
+
+<!-- ============ STRATEGY ============ -->
+<section class="panel" id="strategy" role="tabpanel">
+  <p class="kicker">Basic strategies and trends</p>
+  <h2 class="big">What people actually do with all this</h2>
+  <p class="lede">This is education rather than a recommendation — you'd need to know someone's situation to recommend anything. But these are the ideas that come up repeatedly, and knowing them makes you much harder to sell nonsense to.</p>
+
+  <h3>Before any of it: the boring order of operations</h3>
+  <p>Almost every serious source agrees on roughly this sequence, and it's dull enough that finance influencers skip it entirely.</p>
+  <div class="stage"><div class="n" style="color:var(--surge-text)">1</div><div><h4>Clear expensive debt first</h4><p>Credit cards typically charge 20–40% a year, and payday loans are far worse — a typical UK payday loan works out at well over 1,000% a year once the fees are annualised. No investment reliably beats those rates, so clearing that debt is a guaranteed return you cannot get anywhere else.</p></div></div>
+  <div class="stage"><div class="n" style="color:var(--surge-text)">2</div><div><h4>Build a cash buffer</h4><p>Three to six months of essential costs, in an ordinary savings account. This exists so that a broken laptop doesn't force you to sell investments at the worst possible moment.</p></div></div>
+  <div class="stage"><div class="n" style="color:var(--surge-text)">3</div><div><h4>Only then invest money you won't need for years</h4><p>Money needed within five years generally shouldn't be in the stock market. Over short periods it's close to a coin toss, and coin tosses are a bad way to fund a deposit.</p></div></div>
+
+  <h3>The ideas worth understanding</h3>
+  <div class="defs">
+    <div class="def"><dt>Diversification</dt><dd>Spreading money across many companies, industries and countries so no single failure is fatal. The one thing in finance that genuinely reduces risk without reducing expected return — which is why it gets called the only free lunch.</dd></div>
+    <div class="def"><dt>Time in the market, not timing the market</dt><dd>Trying to sell before falls and buy before rises requires being right twice, repeatedly. Studies consistently find that missing just the best handful of days in a decade guts long-term returns — and the best days cluster suspiciously close to the worst ones, during the exact panics that tempt people to sell.</dd></div>
+    <div class="def"><dt>Cost averaging</dt><dd>Investing a fixed sum on a schedule regardless of the price. You automatically buy more when things are cheap and less when they're expensive, and — more importantly — you remove the decision, which is where most people go wrong.</dd></div>
+    <div class="def"><dt>Passive vs active</dt><dd>Passive means tracking a whole market cheaply. Active means paying someone to pick. Over long periods, the large majority of active funds have failed to beat their benchmark — the index they measure themselves against — after fees. That's not a moral claim about fund managers; it's arithmetic about costs.</dd></div>
+    <div class="def"><dt>Asset allocation</dt><dd>The split between shares, bonds and cash. This decision has historically explained far more of a portfolio's outcome than which specific companies were chosen, and it gets a fraction of the attention.</dd></div>
+    <div class="def"><dt>Risk tolerance</dt><dd>Two halves: how much loss you can financially absorb, and how much you can emotionally tolerate without selling. The second is the one people overestimate, invariably during a bull market.</dd></div>
+  </div>
+
+  <div class="note">
+    <div class="head">Fees are the most underrated force in this entire subject</div>
+    <p>An annual fee of 1.5% instead of 0.2% sounds trivial. Compounded across forty years it can consume a very large fraction of what you would otherwise have ended up with — frequently more than a third. Fees come off every year, in good years and bad, and they're the one variable you can control with total certainty. Check the ongoing charge on anything before you buy it.</p>
+  </div>
+
+  <h3>Trends you'll hear about</h3>
+  <div class="defs">
+    <div class="def"><dt>Index funds and ETFs</dt><dd>The dominant shift of the last few decades. Enormous sums have moved from expensive stock-picking funds into cheap trackers, largely because the evidence favoured it.</dd></div>
+    <div class="def"><dt>Commission-free apps</dt><dd>Trading is now free and instant on your phone. Genuinely democratising, and genuinely a design that encourages overtrading — which research links to worse returns. Both things are true.</dd></div>
+    <div class="def"><dt>Fractional shares</dt><dd>Buying part of a share. The single biggest practical reason "you need thousands to start" stopped being true.</dd></div>
+    <div class="def"><dt>ESG and ethical investing</dt><dd>Screening investments on environmental and social grounds. Growing fast, and fairly criticised for inconsistent standards and "greenwashing" — funds labelled ethical that hold much the same things as ordinary ones.</dd></div>
+    <div class="def"><dt>Finfluencers</dt><dd>Financial advice on social media. Some is excellent. A lot is undisclosed promotion, and several regulators have started acting against it. Assume there's an incentive until shown otherwise.</dd></div>
+  </div>
+
+  <div class="warn">
+    <div class="head">Three things a beginner should treat as off-limits</div>
+    <p><b>Leverage and CFDs</b> (contracts for difference, which let you bet on price moves using borrowed money) — borrowing to invest multiplies losses as well as gains, and brokers are legally required to publish how many of their ordinary customers lose money. The figures are commonly around 70–80%. <b>Day trading</b> — repeated academic studies of active retail traders find that the large majority lose money over time. <b>Anything you can't explain</b> to a friend in two sentences.</p>
+  </div>
+  <button class="jump" data-go="risks">Next: risks and scams</button>
+</section>
+
+<!-- ============ RISKS ============ -->
+<section class="panel" id="risks" role="tabpanel">
+  <p class="kicker">Risks, pitfalls and fraud</p>
+  <h2 class="big">How people actually lose money</h2>
+  <p class="lede">Not usually by choosing a slightly worse company. By panicking, by paying too much in fees, and by being deliberately targeted. Young people with small accounts and social media habits are a favoured target, not an ignored one.</p>
+
+  <h3>Pump and dump, in four stages</h3>
+  <p>A pump and dump is a fraud where organisers buy a small, cheap, thinly traded asset, hype it until strangers pile in, then sell into that demand and leave everyone else holding it. It works on penny stocks — shares in tiny companies that trade for a few pence each — and on crypto tokens, and it has worked in essentially this form since the 1700s. Only the platform changes.</p>
+
+  <div class="chart-hold" style="margin:1.6rem 0 2rem;max-width:640px;">
+    <svg viewBox="0 0 620 260" role="img" aria-labelledby="pd-t">
+      <title id="pd-t">A price chart showing the four stages of a pump and dump: quiet accumulation, a sharp rise, a peak, and a collapse below the starting price</title>
+      <line x1="40" y1="220" x2="600" y2="220" stroke="var(--rule)" stroke-width="1.5"/>
+      <line x1="40" y1="20" x2="40" y2="220" stroke="var(--rule)" stroke-width="1.5"/>
+      <path d="M40 205 L120 202 L180 196 L230 175 L270 140 L300 95 L325 55 L340 38 L355 60 L375 120 L400 170 L430 200 L470 212 L530 216 L600 218"
+            fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      <rect x="40" y="20" width="150" height="200" fill="var(--surge-tint)"/>
+      <rect x="190" y="20" width="150" height="200" fill="rgba(255,182,39,.14)"/>
+      <rect x="340" y="20" width="60" height="200" fill="rgba(217,59,43,.10)"/>
+      <rect x="400" y="20" width="200" height="200" fill="rgba(217,59,43,.18)"/>
+      <circle cx="340" cy="38" r="6" fill="#D93B2B"/>
+      <text x="60" y="45" font-family="Bricolage Grotesque,sans-serif" font-size="13" font-weight="700" fill="var(--surge-text)">1 Accumulate</text>
+      <text x="210" y="45" font-family="Bricolage Grotesque,sans-serif" font-size="13" font-weight="700" fill="#E09400">2 Pump</text>
+      <text x="352" y="30" font-family="Bricolage Grotesque,sans-serif" font-size="13" font-weight="700" fill="#D93B2B">3 Dump</text>
+      <text x="420" y="45" font-family="Bricolage Grotesque,sans-serif" font-size="13" font-weight="700" fill="#D93B2B">4 You are here</text>
+      <text x="46" y="238" font-family="Bricolage Grotesque,sans-serif" font-size="12" fill="var(--ink-soft)">quiet for weeks</text>
+      <text x="240" y="238" font-family="Bricolage Grotesque,sans-serif" font-size="12" fill="var(--ink-soft)">everyone posts about it</text>
+      <text x="450" y="238" font-family="Bricolage Grotesque,sans-serif" font-size="12" fill="var(--ink-soft)">the posts stop</text>
+    </svg>
+  </div>
+
+  <div class="stage"><div class="n">1</div><div><h4>Accumulate, quietly</h4><p>Organisers buy up a large share of something obscure — a company worth very little, or a newly minted token. It must be small and thinly traded, because that's what lets a modest amount of buying move the price a lot.</p></div></div>
+  <div class="stage"><div class="n">2</div><div><h4>Pump</h4><p>Coordinated hype. Group chats, short videos, screenshots of profits, a story about a merger or a breakthrough. The message is always urgency: it's going parabolic, you're early, don't miss it. Real buyers arrive and the price climbs, which becomes the proof that the hype was right.</p></div></div>
+  <div class="stage"><div class="n">3</div><div><h4>Dump</h4><p>The organisers sell everything into the demand they created. Because they hold so much, their selling breaks the price. This happens over hours, sometimes minutes.</p></div></div>
+  <div class="stage"><div class="n">4</div><div><h4>The floor falls out</h4><p>The price collapses, usually below where it started. The group chat goes quiet or pivots to "hold the line". Latecomers can't sell at any sensible price because nobody's buying. The organisers have already moved on to the next one.</p></div></div>
+
+  <div class="warn">
+    <div class="head">Warning signs, in rough order of how reliable they are</div>
+    <ul class="warnlist">
+      <li><b>Urgency.</b> Any pressure to act now, before you've had time to look into it. Legitimate investments are still there next week.</li>
+      <li><b>Guaranteed or specific returns.</b> "10x by Friday", "guaranteed 20% monthly". Nobody can guarantee market returns. Nobody.</li>
+      <li><b>A tiny, obscure asset.</b> If you can't find independent coverage from a source that isn't promoting it, that's the setup.</li>
+      <li><b>Recruitment.</b> You're encouraged to bring friends in. Ask why a working method needs more buyers.</li>
+      <li><b>Screenshots as evidence.</b> Profit screenshots are trivial to fake and always show the wins.</li>
+      <li><b>Anonymous or unverifiable people.</b> No real name, no regulated firm, no address.</li>
+      <li><b>Off-platform contact.</b> Moving you to a private group, Telegram, WhatsApp or DMs — away from anywhere the claims might be challenged or recorded.</li>
+      <li><b>Contempt for questions.</b> Being told you're negative, poor-minded or "not going to make it" for asking how it works. Real explanations survive questions.</li>
+    </ul>
+  </div>
+
+  <h3>Related frauds using the same machinery</h3>
+  <div class="defs">
+    <div class="def"><dt>Ponzi scheme</dt><dd>Returns paid to early investors out of later investors' deposits rather than any real profit. Requires constant new money and collapses when it stops. The tell is unusually steady returns in every market condition.</dd></div>
+    <div class="def"><dt>Rug pull</dt><dd>The crypto version. Developers launch a token, gather funds, then drain the liquidity and disappear, leaving something that can't be sold.</dd></div>
+    <div class="def"><dt>Signals and course selling</dt><dd>Paying monthly for trade tips or a "system". The reliable money is in the subscription, not the trades. Ask to see audited results rather than screenshots.</dd></div>
+    <div class="def"><dt>Impersonation and fake platforms</dt><dd>Cloned websites of real firms, or fabricated brokers showing fake profits — which let you withdraw a small amount early to build trust, then demand fees before a larger withdrawal that never arrives.</dd></div>
+    <div class="def"><dt>Recovery scams</dt><dd>Someone contacts a victim offering to recover lost funds for an upfront fee. Frequently the same people, working the list a second time.</dd></div>
+  </div>
+
+  <div class="note">
+    <div class="head">The check that takes two minutes</div>
+    <p>Every serious market has a regulator with a public register of authorised firms, and most publish a warning list of companies to avoid. Search the firm's name on the regulator's own site — not on a link the firm gave you. In the UK that's the Financial Conduct Authority, in the US the SEC and FINRA, in South Africa the Financial Sector Conduct Authority, in Australia ASIC. If a firm isn't on the register, you have your answer, and if something goes wrong with an unregulated firm you will usually have no protection at all.</p>
+  </div>
+
+  <h3>The pitfalls that aren't fraud</h3>
+  <p>Most money lost isn't stolen. It's given away through ordinary human behaviour, and knowing the names helps you catch yourself.</p>
+  <div class="defs">
+    <div class="def"><dt>Panic selling</dt><dd>Selling during a crash converts a temporary paper loss into a permanent real one, and people who do it rarely buy back in before the recovery. This is the single most expensive habit on the list.</dd></div>
+    <div class="def"><dt>FOMO buying</dt><dd>Buying because something has already risen a great deal, which by definition means paying more than everyone who's now selling to you.</dd></div>
+    <div class="def"><dt>Overconfidence</dt><dd>A few early wins in a rising market feel like skill. They're usually a rising market. This is where people start borrowing.</dd></div>
+    <div class="def"><dt>Loss aversion</dt><dd>Losses hurt roughly twice as much as equivalent gains please us, so people hold failing investments hoping to "get back to even" while selling their winners early — precisely backwards.</dd></div>
+    <div class="def"><dt>Survivorship bias</dt><dd>You see the person who put everything into one stock and won. You don't see the thousands who did the same and lost, because they don't post about it.</dd></div>
+    <div class="def"><dt>Concentration</dt><dd>Everything in one company, one sector, or one country. It feels like conviction right up until it doesn't.</dd></div>
+  </div>
+
+  <div class="warn">
+    <div class="head">If you think you've been scammed</div>
+    <p>Stop sending money immediately, including any "release fee" or "tax" needed to get your funds out — that's part of the same fraud. Contact your bank, which may be able to halt or recover a recent payment. Report it to your national regulator and police fraud service. Keep every message and screenshot. And tell someone you trust: shame is what scammers rely on to keep victims quiet, and it's the reason so much of this goes unreported. Being defrauded by professionals is not a character flaw.</p>
+  </div>
+  <button class="jump" data-go="predict">Next: predictions</button>
+</section>
+
+<!-- ============ PREDICT ============ -->
+<section class="panel" id="predict" role="tabpanel">
+  <p class="kicker">Forecasting</p>
+  <h2 class="big">Predictions</h2>
+  <p class="lede">Every day, confident people on television and in your feed tell you where the market is going next. This tab is about how much that's worth. Start by trying it yourself.</p>
+
+  <div class="game">
+    <h3>Call the next move</h3>
+    <p class="sub">A price chart. You say whether the next step goes up or down. Straightforward — and you'll find yourself building reasons for your answers within about four guesses.</p>
+    <svg id="pchart" viewBox="0 0 620 250" role="img" aria-labelledby="pc-t">
+      <title id="pc-t">A price chart you predict the next movement of</title>
+      <g id="p-grid"></g>
+      <path id="p-line" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <path id="p-new" fill="none" stroke-width="3.5" stroke-linecap="round"/>
+      <circle id="p-dot" r="4.5" fill="var(--spark)"/>
+    </svg>
+    <div class="gbtns">
+      <button class="gbtn up" id="p-up">Up ↑</button>
+      <button class="gbtn down" id="p-down">Down ↓</button>
+      <button class="gbtn quiet" id="p-reset">Start again</button>
+    </div>
+    <p class="verdict" id="p-verdict">Make your first call.</p>
+    <div class="tally">
+      <div><span>Calls made</span><b id="p-n">0</b></div>
+      <div><span>Correct</span><b id="p-hits">0</b></div>
+      <div><span>Your hit rate</span><b id="p-rate">—</b></div>
+      <div><span>A coin's hit rate</span><b style="color:var(--ink-soft)">50%</b></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="head">Full disclosure: that chart is random numbers</div>
+    <p>There is no company, no news and no pattern. Each step is generated by a random number generator the moment you click, so it literally does not exist until after you've committed. Nothing could have told you the answer.</p>
+    <p>Two things are worth noticing. First, it looks completely convincing — it has trends, rallies, crashes and support levels, because that's what randomness looks like when you draw it as a line. Second, you probably still felt you had a read on it. That instinct is not a personal flaw; it's the pattern-matching that makes humans good at almost everything else, misfiring in the one environment where it costs money.</p>
+  </div>
+
+  <h3>Why the professionals aren't much better</h3>
+  <p>This is the uncomfortable part. Large banks publish year-end targets for major indexes every January, and journalists have made a running joke of comparing them to what actually happened — the misses are routinely enormous, and in the years that mattered most, like 2008 and 2020, almost nobody's forecast was close. Economists' record on predicting recessions is similarly poor; the large majority of recessions in recent decades were not forecast a year ahead by the consensus.</p>
+  <p>It isn't that these people are stupid or lazy. It's that they're being asked to do something that may not be possible. A market price already contains everyone's collective best guess about the future. To beat it consistently you need to be reliably more right than the combined judgement of millions of people, many of whom are extremely well resourced. Some manage it for a while. Very few manage it for decades, and identifying them in advance is its own unsolved problem.</p>
+
+  <div class="note">
+    <div class="head">Long-term and short-term are different questions</div>
+    <p>"Nobody can predict the market" is shorthand, and it's only true over short periods. Nobody can tell you what next Tuesday holds. But it is reasonable to say that over thirty years the global economy will probably be larger than it is today, and that owning a slice of it will probably have beaten cash. That's not a forecast of a number, it's a statement about direction over a long stretch — and it's the difference between investing and predicting.</p>
+  </div>
+
+  <h3>How to judge anyone's prediction</h3>
+  <p>You'll never stop encountering forecasts, so the useful skill is grading them. Five questions, in order of how much they reveal.</p>
+  <div class="defs">
+    <div class="def"><dt>Is it falsifiable?</dt><dd>"The market will correct" is unfalsifiable — no number, no date, so it can never be wrong. "The FTSE 100 will close lower on 31 December than it is today" can be checked. Vagueness is usually a choice.</dd></div>
+    <div class="def"><dt>What's their track record — all of it?</dt><dd>Anyone can show their best calls. Ask what share of their predictions came true, including the ones they've stopped mentioning. Someone who called one crash correctly has probably also called nine that never came.</dd></div>
+    <div class="def"><dt>What do they gain if you believe it?</dt><dd>Do they own the thing they're recommending? Sell a course, a newsletter, a signals group? Get paid by views? An incentive doesn't make someone wrong, but it tells you how hard to check.</dd></div>
+    <div class="def"><dt>Is there a time frame?</dt><dd>A prediction with no deadline can be defended forever with "just wait". Every genuine forecast has an expiry date attached.</dd></div>
+    <div class="def"><dt>How confident are they, really?</dt><dd>Careful forecasters speak in probabilities and say when they'd change their mind. Total certainty about an uncertain system is a warning sign, not a sign of expertise.</dd></div>
+  </div>
+
+  <div class="journal">
+    <h3>Your prediction log</h3>
+    <p class="sub">Hindsight bias is the tendency to remember having known all along. It's near-universal, and the only real defence is writing the prediction down before the outcome. Log a few here — about markets, a company, an election, anything checkable — then revisit them on the date you set.</p>
+    <div class="jrow">
+      <input type="text" id="j-text" placeholder="e.g. Gold will be above $2,500 an ounce" maxlength="160" aria-label="Your prediction">
+      <input type="date" id="j-date" aria-label="Date to check back">
+      <select id="j-conf" aria-label="How confident you are">
+        <option>Just a hunch</option>
+        <option selected>Fairly sure</option>
+        <option>Confident</option>
+        <option>Would bet on it</option>
+      </select>
+    </div>
+    <button class="gbtn" id="j-add">Log this prediction</button>
+    <ul class="jlist" id="j-list"></ul>
+    <div id="j-tools" style="display:none;margin-top:1.1rem;">
+      <button class="gbtn quiet" id="j-copy">Copy log as text</button>
+      <textarea id="j-out" readonly hidden aria-label="Your prediction log as plain text"></textarea>
+    </div>
+    <p class="hits" style="margin:1.1rem 0 0;">Stored in this browser tab only, and gone when you reload. Copy it out if you want to keep it.</p>
+  </div>
+
+  <button class="jump" data-go="quiz">Test what you've picked up</button>
+</section>
+
+<!-- ============ GLOSSARY ============ -->
+<section class="panel" id="glossary" role="tabpanel">
+  <p class="kicker">Reference</p>
+  <h2 class="big">Glossary</h2>
+  <p class="lede">Every term used on this site, plus the ones you'll meet immediately afterwards. Type to filter.</p>
+  <label for="gsearch" style="position:absolute;left:-9999px;">Search the glossary</label>
+  <input type="search" id="gsearch" class="search" placeholder="Search terms and definitions…" autocomplete="off">
+  <p class="hits" id="ghits">Showing all 44 terms</p>
+  <div class="defs" id="glist"></div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section class="panel" id="quiz" role="tabpanel">
+  <p class="kicker">Check yourself</p>
+  <h2 class="big">Ten questions</h2>
+  <p class="lede">No scores are saved and nobody sees them. If you get one wrong the explanation tells you which tab to revisit.</p>
+  <div id="qlist"></div>
+  <p class="score" id="qscore"></p>
+  <p style="margin-top:1.8rem;"><button class="jump" data-go="learn">Where to read next</button></p>
+</section>
+
+<!-- ============ LEARN MORE ============ -->
+<section class="panel" id="learn" role="tabpanel">
+  <p class="kicker">Where to go next</p>
+  <h2 class="big">Websites, videos and books</h2>
+  <p class="lede">This site is an introduction, not an education. Everything below goes deeper. It's ordered by how much you can trust it, which is not the same as how entertaining it is.</p>
+
+  <div class="note">
+    <div class="head">Before you click anything: who is paying for this?</div>
+    <p>Financial content is unusual in that most of it is free, which means you are rarely the customer. Regulators publish material because their job is to stop people being defrauded. Brokers publish material to get you trading, because they earn when you do. Influencers publish because attention pays, and the most extreme claim gets the most attention. None of that makes a source useless — it tells you which direction to expect the bias to point.</p>
+  </div>
+
+  <h3>Regulators and public bodies</h3>
+  <p>The least exciting and most reliable material on the internet. These organisations have no product to sell you, and several run free scam-checking tools.</p>
+  <div class="res">
+    <div class="rname"><a href="https://www.investor.gov" target="_blank" rel="noopener">Investor.gov</a> — US Securities and Exchange Commission<span class="free">Free</span></div>
+    <p>Plain-English explanations of nearly every term on this site, plus a compound interest calculator and a search tool for checking whether an adviser is registered.</p>
+  </div>
+  <div class="res">
+    <div class="rname"><a href="https://www.moneyhelper.org.uk" target="_blank" rel="noopener">MoneyHelper</a> — UK, government-backed<span class="free">Free</span></div>
+    <p>Covers the whole picture rather than just investing: budgeting, debt, pensions and savings. The best starting point if you're in the UK and the word "investing" still feels several steps away.</p>
+  </div>
+  <div class="res">
+    <div class="rname"><a href="https://www.fca.org.uk/scamsmart" target="_blank" rel="noopener">FCA ScamSmart</a> — UK Financial Conduct Authority<span class="free">Free</span></div>
+    <p>The register of authorised firms and the warning list of ones to avoid. This is the two-minute check described on the Risks tab.</p>
+  </div>
+  <div class="res">
+    <div class="rname"><a href="https://www.finra.org/investors" target="_blank" rel="noopener">FINRA Investor Education</a> — US<span class="free">Free</span></div>
+    <p>Strong material on fraud, plus BrokerCheck for looking up the history and disciplinary record of any US broker.</p>
+  </div>
+  <div class="res">
+    <div class="rname"><a href="https://www.fsca.co.za" target="_blank" rel="noopener">FSCA</a> — Financial Sector Conduct Authority, South Africa<span class="free">Free</span></div>
+    <p>The South African regulator. Publishes warnings about unlicensed operators and lets you verify whether a financial services provider is authorised.</p>
+  </div>
+
+  <h3>Reference and courses</h3>
+  <div class="res">
+    <div class="rname"><a href="https://www.khanacademy.org" target="_blank" rel="noopener">Khan Academy</a> — Finance and Capital Markets<span class="free">Free</span></div>
+    <p>A structured video course from basic interest through to how the 2008 crisis actually worked, taught patiently and assuming nothing. Probably the single best free course on this subject.</p>
+  </div>
+  <div class="res">
+    <div class="rname"><a href="https://www.investopedia.com" target="_blank" rel="noopener">Investopedia</a><span class="free">Free</span></div>
+    <p>The default dictionary of finance. Excellent for looking up a term you've just met. Be aware that some pages carry broker advertising, so treat the reference articles as stronger than the recommendation ones.</p>
+  </div>
+  <div class="res">
+    <div class="rname"><a href="https://www.bogleheads.org/wiki" target="_blank" rel="noopener">Bogleheads Wiki</a><span class="free">Free</span></div>
+    <p>A volunteer community built around low-cost index investing. Opinionated in a clearly stated direction, unusually evidence-driven, and completely uninterested in selling you anything. Has country-specific guides beyond the US.</p>
+  </div>
+  <div class="res">
+    <div class="rname"><a href="https://www.morningstar.com" target="_blank" rel="noopener">Morningstar</a></div>
+    <p>Independent research and, crucially, fee data on funds. Useful when you want to check what a fund actually charges rather than what its marketing says.</p>
+  </div>
+
+  <h3>Video channels</h3>
+  <p>Search these names rather than following links from ads or comments — impersonation accounts are common on financial content. Rough test for any channel: does it ever say "I don't know", and does it show losses as well as wins?</p>
+  <div class="res">
+    <div class="rname">The Plain Bagel</div>
+    <p>Made by a Canadian analyst. Calm explainers of concepts and unusually good breakdowns of specific scams and collapses, without any hype.</p>
+  </div>
+  <div class="res">
+    <div class="rname">Ben Felix / The Rational Reminder</div>
+    <p>Short videos summarising actual academic research on investing, with citations. Denser than most, and the closest thing to a peer-reviewed YouTube channel on this topic.</p>
+  </div>
+  <div class="res">
+    <div class="rname">Patrick Boyle</div>
+    <p>A finance professor and former fund manager. Dryly funny explanations of how markets work and detailed post-mortems of frauds, which pairs well with the Risks tab.</p>
+  </div>
+  <div class="res">
+    <div class="rname">Aswath Damodaran</div>
+    <p>An NYU professor who posts his full university valuation lectures for free. Genuinely advanced — worth knowing exists for when you want to go much deeper.</p>
+  </div>
+  <div class="res">
+    <div class="rname">Two Cents (PBS) and CrashCourse Economics</div>
+    <p>Short, made for people starting from zero, and pitched at roughly school age without being condescending. Good for the fundamentals underneath investing.</p>
+  </div>
+
+  <h3>Podcasts</h3>
+  <div class="res">
+    <div class="rname">Planet Money — NPR</div>
+    <p>Twenty-minute episodes that explain an economic idea through a story. Frequently the easiest way into a concept that reads as dry on a page.</p>
+  </div>
+  <div class="res">
+    <div class="rname">Odd Lots — Bloomberg</div>
+    <p>Long interviews about what is actually happening in markets right now. Harder going, and a good next step once the vocabulary on this site feels comfortable.</p>
+  </div>
+  <div class="res">
+    <div class="rname">The Rational Reminder</div>
+    <p>Evidence-based investing at length, including interviews with the academics whose research the rest of the field quotes.</p>
+  </div>
+
+  <h3>Books, if you want one thing that lasts</h3>
+  <div class="res">
+    <div class="rname">The Psychology of Money — Morgan Housel</div>
+    <p>Short essays on why people behave irrationally with money. The best first book on this list, because behaviour matters more than technique and it's readable in a weekend.</p>
+  </div>
+  <div class="res">
+    <div class="rname">The Little Book of Common Sense Investing — John Bogle</div>
+    <p>The case for cheap index funds, argued by the man who created the first one. Repetitive by design, and the repetition is the point.</p>
+  </div>
+  <div class="res">
+    <div class="rname">A Random Walk Down Wall Street — Burton Malkiel</div>
+    <p>The classic argument that short-term price movements are close to unpredictable — the idea underneath the Predictions tab. Regularly updated since 1973.</p>
+  </div>
+  <div class="res">
+    <div class="rname">The Intelligent Investor — Benjamin Graham</div>
+    <p>First published in 1949 and still cited constantly. Dated in its examples and demanding to read, but the chapters on market psychology have aged remarkably well.</p>
+  </div>
+
+  <h3>Films and documentaries</h3>
+  <div class="res">
+    <div class="rname">Inside Job (2010)</div>
+    <p>Documentary on the causes of the 2008 crisis. Has a clear argument it wants you to accept, so watch it as one well-made case rather than the neutral account.</p>
+  </div>
+  <div class="res">
+    <div class="rname">The Big Short (2015)</div>
+    <p>A drama, so it compresses and simplifies — but it explains mortgage-backed securities better than most textbooks and is honest about how few people saw it coming.</p>
+  </div>
+  <div class="res">
+    <div class="rname">Dumb Money (2023)</div>
+    <p>The GameStop story from the History tab. Entertaining, and worth watching alongside reporting on the people who bought near the top and lost.</p>
+  </div>
+
+  <div class="warn">
+    <div class="head">What to be careful with</div>
+    <p>Content promising specific returns, "signals" or copy-trading groups, anything that needs you to sign up through a referral link, and short-form videos showing profit screenshots. Referral links mean the creator is paid when you open an account, which is disclosed far less often than the rules require. A useful habit: before acting on any financial content, look for the same claim on a regulator's site. If it isn't there, ask why.</p>
+  </div>
+
+  <h3>How the figures on this site were checked</h3>
+  <p>Every number here was checked against an independent source rather than written from memory. The ones that go out of date are listed below with where to confirm them.</p>
+  <div class="defs">
+    <div class="def"><dt>Long-run returns (about 5.2% a year after inflation)</dt><dd>The UBS Global Investment Returns Yearbook, which tracks more than twenty markets from 1900 onwards. The US figure is higher; several countries are much lower.</dd></div>
+    <div class="def"><dt>Exchange sizes and rankings</dt><dd>World Federation of Exchanges data. Published totals vary a lot between sources depending on what each one counts, so this site gives the order rather than the dollar amounts — the ranking is stable, the numbers are not.</dd></div>
+    <div class="def"><dt>How often markets fall</dt><dd>Bear market records since 1928: 27 falls of 20% or more, which works out at about one every three and a half years.</dd></div>
+    <div class="def"><dt>Company facts, such as dividends</dt><dd>Company filings and published dividend histories, checked directly.</dd></div>
+  </div>
+  <div class="note">
+    <div class="head">Figures last checked on 28 October 2026</div>
+    <p>Market sizes, index levels and interest rates change all the time. Anything on this site with a number in it is worth re-checking against the sources above before you rely on it. The links were working on that date; websites move and channels change.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h4>About Stock Spark</h4>
+      <p>A student project built on one belief: financial literacy is a basic life skill, and it shouldn't depend on whether your family happened to talk about money at dinner. If one person reads this and doesn't fall for a group chat promising 10x by Friday, it worked.</p>
+    </div>
+    <div>
+      <h4>Where to read next</h4>
+      <p>Regulators publish free, unbiased beginner material — the FCA and MoneyHelper in the UK, Investor.gov from the US SEC, and the FSCA in South Africa. They have no product to sell you, which is more than can be said for most of what's online.</p>
+      <p style="margin-top:1.2rem;font-size:.88rem;">Educational content only. Not financial advice. Investments can fall as well as rise and you may get back less than you put in. Figures last checked on 28 October 2026.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- tabs ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+
+  function setHist(id, push){
+    if(!push) return;
+    try{
+      if(history.pushState) history.pushState({tab:id}, '', '#'+id);
+      else if(location.hash.slice(1) !== id) location.hash = id;
+    }catch(err){
+      if(location.hash.slice(1) !== id) location.hash = id;
+    }
+  }
+
+  function show(id, push){
+    var found = false;
+    panels.forEach(function(p){
+      var on = p.id === id;
+      p.classList.toggle('on', on);
+      if(on) found = true;
+    });
+    if(!found){ return show('start', push); }
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.p === id ? 'true':'false'); });
+    var active = document.querySelector('.tab[aria-selected="true"]');
+    if(active && active.scrollIntoView) active.scrollIntoView({block:'nearest', inline:'nearest'});
+    setHist(id, push);
+    window.scrollTo({top:0, behavior:'instant' in document.body.style ? 'instant':'auto'});
+  }
+
+  tabs.forEach(function(t){
+    t.setAttribute('aria-controls', t.dataset.p);
+    t.addEventListener('click', function(){ show(t.dataset.p, true); });
+  });
+
+  var tabbar = document.querySelector('.tabs');
+  tabbar.addEventListener('keydown', function(e){
+    var i = tabs.indexOf(document.activeElement);
+    if(i < 0) return;
+    var n = e.key === 'ArrowRight' ? (i + 1) % tabs.length
+          : e.key === 'ArrowLeft'  ? (i - 1 + tabs.length) % tabs.length
+          : e.key === 'Home'       ? 0
+          : e.key === 'End'        ? tabs.length - 1 : -1;
+    if(n < 0) return;
+    e.preventDefault();
+    tabs[n].focus();
+    show(tabs[n].dataset.p, true);
+  });
+
+  var logo = document.querySelector('.logo');
+  if(logo) logo.addEventListener('click', function(e){ e.preventDefault(); show('start', true); });
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click', function(){ show(b.dataset.go, true); });
+  });
+  var startTab = location.hash ? location.hash.slice(1) : 'start';
+  show(startTab, false);
+  try{ if(history.replaceState) history.replaceState({tab:document.querySelector('.panel.on').id}, ''); }catch(e){}
+
+  window.addEventListener('popstate', function(e){
+    var id = (e.state && e.state.tab) || (location.hash ? location.hash.slice(1) : 'start');
+    show(id, false);
+  });
+  window.addEventListener('hashchange', function(){
+    var id = location.hash ? location.hash.slice(1) : 'start';
+    var cur = document.querySelector('.panel.on');
+    if(!cur || cur.id !== id) show(id, false);
+  });
+
+  /* ---------- compound calculator ---------- */
+  var cur = '£';
+  var sAmt = document.getElementById('s-amt'),
+      sYrs = document.getElementById('s-yrs'),
+      sRet = document.getElementById('s-ret');
+
+  function money(n){
+    var r = Math.round(n);
+    return cur + r.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  function series(amt, yrs, rate){
+    var i = rate/100/12, pts = [];
+    for(var y=0; y<=yrs; y++){
+      var n = y*12;
+      var tot = i === 0 ? amt*n : amt * ((Math.pow(1+i,n)-1)/i);
+      pts.push({y:y, paid:amt*n, tot:tot});
+    }
+    return pts;
+  }
+
+  function path(pts, key, max, yrs, close){
+    var W = 560, H = 330, L = 46, R = 12, T = 16, B = 34;
+    var px = function(y){ return L + (y/yrs) * (W-L-R); };
+    var py = function(v){ return H-B - (v/max) * (H-T-B); };
+    var d = '';
+    pts.forEach(function(p,ix){ d += (ix?'L':'M') + px(p.y).toFixed(1) + ' ' + py(p[key]).toFixed(1) + ' '; });
+    if(close) d += 'L' + px(yrs).toFixed(1) + ' ' + (H-B) + ' L' + L + ' ' + (H-B) + ' Z';
+    return d;
+  }
+
+  function draw(){
+    var amt = +sAmt.value, yrs = +sYrs.value, rate = +sRet.value;
+    document.getElementById('v-amt').textContent = cur + amt;
+    document.getElementById('v-yrs').textContent = yrs;
+    document.getElementById('v-ret').textContent = rate + '%';
+
+    var pts = series(amt, yrs, rate);
+    var last = pts[pts.length-1];
+    var max = last.tot * 1.06 || 1;
+
+    document.getElementById('v-total').textContent = money(last.tot);
+    document.getElementById('v-note').textContent =
+      'You paid in ' + money(last.paid) + '. The other ' + money(last.tot-last.paid) + ' is growth.';
+
+    document.getElementById('line-paid').setAttribute('d', path(pts,'paid',max,yrs,false));
+    document.getElementById('line-tot').setAttribute('d', path(pts,'tot',max,yrs,false));
+    document.getElementById('area-tot').setAttribute('d', path(pts,'tot',max,yrs,true));
+
+    // gridlines + labels
+    var W=560,H=330,L=46,R=12,T=16,B=34, g='', ax='';
+    for(var k=0;k<=3;k++){
+      var v = max*k/3, yy = (H-B) - (v/max)*(H-T-B);
+      g += '<line x1="'+L+'" y1="'+yy.toFixed(1)+'" x2="'+(W-R)+'" y2="'+yy.toFixed(1)+'" stroke="rgba(255,255,255,.11)" stroke-width="1"/>';
+      var lbl = v >= 1000 ? cur + Math.round(v/1000) + 'k' : cur + Math.round(v);
+      ax += '<text x="'+(L-6)+'" y="'+(yy+4).toFixed(1)+'" text-anchor="end" font-family="Bricolage Grotesque,sans-serif" font-size="12" fill="#9AA3C4">'+lbl+'</text>';
+    }
+    ax += '<text x="'+L+'" y="'+(H-10)+'" font-family="Bricolage Grotesque,sans-serif" font-size="12" fill="#9AA3C4">year 0</text>';
+    ax += '<text x="'+(W-R)+'" y="'+(H-10)+'" text-anchor="end" font-family="Bricolage Grotesque,sans-serif" font-size="12" fill="#9AA3C4">year '+yrs+'</text>';
+    document.getElementById('grid').innerHTML = g;
+    document.getElementById('axis').innerHTML = ax;
+  }
+
+  [sAmt,sYrs,sRet].forEach(function(s){ s.addEventListener('input', draw); });
+  function setCurrency(c){
+    cur = c;
+    document.querySelectorAll('.cur button').forEach(function(o){
+      o.setAttribute('aria-pressed', o.dataset.cur === c ? 'true':'false');
+    });
+    document.querySelectorAll('[data-set="cur"]').forEach(function(o){
+      o.setAttribute('aria-pressed', o.dataset.val === c ? 'true':'false');
+    });
+    draw();
+  }
+  document.querySelectorAll('.cur button').forEach(function(b){
+    b.addEventListener('click', function(){ setCurrency(b.dataset.cur); });
+  });
+  draw();
+
+  /* ---------- user settings ---------- */
+  var root = document.documentElement;
+  var defaults = {theme:'light', size:'md', face:'serif', motion:'on', cur:'£'};
+
+  function mark(key, val){
+    document.querySelectorAll('[data-set="'+key+'"]').forEach(function(b){
+      b.setAttribute('aria-pressed', b.dataset.val === val ? 'true':'false');
+    });
+  }
+  function apply(key, val){
+    if(key === 'cur'){ setCurrency(val); return; }
+    root.setAttribute('data-'+key, val);
+    mark(key, val);
+  }
+  document.querySelectorAll('[data-set]').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.dataset.set, b.dataset.val); });
+  });
+  Object.keys(defaults).forEach(function(k){ apply(k, defaults[k]); });
+
+  var gear = document.getElementById('gear'), drawer = document.getElementById('drawer');
+  gear.addEventListener('click', function(){
+    var open = gear.getAttribute('aria-expanded') === 'true';
+    gear.setAttribute('aria-expanded', open ? 'false':'true');
+    drawer.classList.toggle('on', !open);
+  });
+  document.getElementById('reset-set').addEventListener('click', function(){
+    Object.keys(defaults).forEach(function(k){ apply(k, defaults[k]); });
+  });
+
+  /* ---------- prediction game ---------- */
+  var pS = [], pN = 0, pHits = 0, pWin = 46;
+
+  function pStep(v){
+    var r = (Math.random()+Math.random()+Math.random()+Math.random()-2)/2;
+    var n = v * (1 + r*0.032);
+    return Math.max(4, n === v ? v*1.001 : n);
+  }
+  function pSeed(){
+    pS = [100];
+    for(var i=0;i<pWin;i++) pS.push(pStep(pS[pS.length-1]));
+    pN = 0; pHits = 0;
+  }
+  function pDraw(flash){
+    var W=620,H=250,L=42,R=14,T=18,B=26;
+    var vis = pS.slice(-(pWin+1));
+    var mn = Math.min.apply(null, vis), mx = Math.max.apply(null, vis);
+    var pad = (mx-mn)*0.16 || 1; mn -= pad; mx += pad;
+    var px = function(i){ return L + (i/(vis.length-1))*(W-L-R); };
+    var py = function(v){ return H-B - ((v-mn)/(mx-mn))*(H-T-B); };
+
+    var d = '';
+    vis.forEach(function(v,i){ d += (i?'L':'M') + px(i).toFixed(1) + ' ' + py(v).toFixed(1) + ' '; });
+    document.getElementById('p-line').setAttribute('d', d);
+
+    var nw = document.getElementById('p-new');
+    if(flash && vis.length > 1){
+      var a = vis.length-2, b = vis.length-1;
+      nw.setAttribute('d','M'+px(a).toFixed(1)+' '+py(vis[a]).toFixed(1)+' L'+px(b).toFixed(1)+' '+py(vis[b]).toFixed(1));
+      nw.setAttribute('stroke', flash === 'ok' ? 'var(--rise)' : 'var(--fall)');
+    } else { nw.setAttribute('d',''); }
+
+    var dot = document.getElementById('p-dot');
+    dot.setAttribute('cx', px(vis.length-1).toFixed(1));
+    dot.setAttribute('cy', py(vis[vis.length-1]).toFixed(1));
+
+    var g = '';
+    for(var k=0;k<=2;k++){
+      var yy = T + (k/2)*(H-T-B);
+      g += '<line x1="'+L+'" y1="'+yy.toFixed(1)+'" x2="'+(W-R)+'" y2="'+yy.toFixed(1)+'" stroke="var(--rule)" stroke-width="1"/>';
+    }
+    document.getElementById('p-grid').innerHTML = g;
+  }
+  function pTally(){
+    document.getElementById('p-n').textContent = pN;
+    document.getElementById('p-hits').textContent = pHits;
+    document.getElementById('p-rate').textContent = pN ? Math.round(pHits/pN*100)+'%' : '—';
+  }
+  function pGuess(dir){
+    var last = pS[pS.length-1], nxt = pStep(last);
+    pS.push(nxt);
+    if(pS.length > 260) pS.shift();
+    var went = nxt > last ? 'up' : 'down';
+    var ok = went === dir;
+    pN++; if(ok) pHits++;
+    pDraw(ok ? 'ok' : 'bad');
+    pTally();
+
+    var msg = 'It went ' + went + '. ' + (ok ? 'Good call.' : 'Not this time.');
+    if(pN >= 12){
+      var rate = pHits/pN, pct = Math.round(rate*100);
+      if(rate >= 0.62) msg += ' You are on ' + pct + '%, which over ' + pN + ' calls is a run of luck rather than a skill. Keep going and watch it drift back toward 50.';
+      else if(rate <= 0.38) msg += ' You are on ' + pct + '% — impressively bad, and equally just luck. Reliably wrong would be as remarkable as reliably right.';
+      else msg += ' You are hovering around 50%, which is exactly what should happen against a coin.';
+    } else if(pN >= 5){
+      msg += ' Notice whether you have started explaining the chart to yourself.';
+    }
+    document.getElementById('p-verdict').textContent = msg;
+  }
+  document.getElementById('p-up').addEventListener('click', function(){ pGuess('up'); });
+  document.getElementById('p-down').addEventListener('click', function(){ pGuess('down'); });
+  document.getElementById('p-reset').addEventListener('click', function(){
+    pSeed(); pDraw(null); pTally();
+    document.getElementById('p-verdict').textContent = 'New chart, fresh score. Make your first call.';
+  });
+  pSeed(); pDraw(null); pTally();
+
+  /* ---------- prediction journal ---------- */
+  var jItems = [];
+  var jList = document.getElementById('j-list'), jTools = document.getElementById('j-tools');
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function jRender(){
+    jList.innerHTML = jItems.map(function(it, i){
+      return '<li><p>' + esc(it.text) +
+             '<span class="jmeta">' + esc(it.conf) + ' · logged ' + esc(it.made) +
+             ' · check on ' + esc(it.date || 'no date set') + '</span></p>' +
+             '<button class="jdel" data-i="' + i + '">Remove</button></li>';
+    }).join('');
+    jTools.style.display = jItems.length ? 'block' : 'none';
+  }
+  document.getElementById('j-add').addEventListener('click', function(){
+    var t = document.getElementById('j-text');
+    if(!t.value.trim()){ t.focus(); return; }
+    jItems.push({
+      text: t.value.trim(),
+      date: document.getElementById('j-date').value,
+      conf: document.getElementById('j-conf').value,
+      made: new Date().toISOString().slice(0,10)
+    });
+    t.value = '';
+    jRender();
+  });
+  document.getElementById('j-text').addEventListener('keydown', function(e){
+    if(e.key === 'Enter') document.getElementById('j-add').click();
+  });
+  jList.addEventListener('click', function(e){
+    var b = e.target.closest('.jdel');
+    if(!b) return;
+    jItems.splice(+b.dataset.i, 1);
+    jRender();
+  });
+  document.getElementById('j-copy').addEventListener('click', function(){
+    var btn = this, out = document.getElementById('j-out');
+    var txt = 'My predictions\n\n' + jItems.map(function(it, i){
+      return (i+1) + '. ' + it.text + '\n   ' + it.conf + ' | logged ' + it.made +
+             ' | check on ' + (it.date || 'no date set');
+    }).join('\n\n');
+    function fallback(){
+      out.hidden = false; out.value = txt; out.select();
+      btn.textContent = 'Select the text above and copy';
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){
+        btn.textContent = 'Copied';
+        setTimeout(function(){ btn.textContent = 'Copy log as text'; }, 2000);
+      })['catch'](fallback);
+    } else fallback();
+  });
+
+  /* ---------- glossary ---------- */
+  var terms = [
+    ["Ask","The lowest price a seller is currently willing to accept."],
+    ["Asset allocation","How money is split between shares, bonds and cash. Historically explains more of an outcome than stock picking does."],
+    ["Bear market","A fall of 20% or more from a recent peak."],
+    ["Bid","The highest price a buyer is currently willing to pay."],
+    ["Blue chip","A large, long-established, financially solid company."],
+    ["Bond","A loan to a government or company that pays fixed interest and repays the original sum at maturity."],
+    ["Broker","The regulated firm through which you buy and sell investments."],
+    ["Bull market","A sustained period of rising prices."],
+    ["Capital gain","Profit made when an investment is sold for more than it cost."],
+    ["Circuit breaker","An automatic pause in trading triggered when prices fall too far too fast."],
+    ["Compounding","Returns earning further returns. The reason long time horizons matter so much."],
+    ["Coupon","The interest rate a bond pays its holder."],
+    ["Cost averaging","Investing a fixed amount on a regular schedule regardless of price."],
+    ["Default","When a borrower fails to make payments on a bond."],
+    ["Diversification","Spreading money across many investments so no single failure is fatal."],
+    ["Dividend","A share of company profits paid to shareholders."],
+    ["Dividend yield","Annual dividend divided by share price, as a percentage."],
+    ["ETF","Exchange-traded fund. A fund holding many investments that trades on an exchange like a single share."],
+    ["Ex-dividend date","The cut-off after which a buyer does not receive the upcoming dividend."],
+    ["Exchange","A marketplace where securities are bought and sold, such as the LSE or NYSE."],
+    ["Face value","The sum a bond repays at maturity. Also called par."],
+    ["FOMO","Fear of missing out. Buying because a price has already risen sharply."],
+    ["Fractional share","A portion of a single share, letting small sums buy expensive stocks."],
+    ["FTSE 100","An index of the 100 largest companies on the London Stock Exchange."],
+    ["Fund","A single investment that pools money across many underlying holdings."],
+    ["Index","A calculation tracking a group of investments. A scoreboard, not a place."],
+    ["Index fund","A fund that copies an index rather than picking investments."],
+    ["Inflation risk","The risk that returns fail to keep pace with rising prices, so money buys less."],
+    ["IPO","Initial public offering. The first sale of a company's shares to the public."],
+    ["Junk bond","A bond from a borrower rated below investment grade. Higher interest, higher risk of default."],
+    ["Leverage","Investing with borrowed money. Multiplies losses as well as gains."],
+    ["Limit order","An instruction to trade only at a specified price or better."],
+    ["Liquidity","How easily something can be sold without moving its price."],
+    ["Market cap","Share price multiplied by number of shares. The value of the whole company."],
+    ["Market order","An instruction to trade immediately at the best available price."],
+    ["Maturity","The date a bond repays its face value."],
+    ["P/E ratio","Share price divided by earnings per share. Roughly, years of current profit being paid for."],
+    ["Payout ratio","The share of profit paid out as dividends. Indicates whether a dividend is sustainable."],
+    ["Ponzi scheme","A fraud paying earlier investors with later investors' money rather than real profits."],
+    ["Portfolio","The complete collection of investments a person holds."],
+    ["Pump and dump","A fraud where organisers hype an asset they own, then sell into the demand they created."],
+    ["Spread","The gap between bid and ask. A hidden cost on every trade."],
+    ["Volatility","How sharply a price swings up and down over time."],
+    ["Yield trap","A high dividend yield caused by a collapsing share price, usually signalling a dividend about to be cut."],
+    ["Benchmark","The index a fund measures itself against, such as the S&P 500."],
+    ["CFD","Contract for difference. A product that lets you bet on a price moving, using borrowed money. Most people who use them lose money."],
+    ["Creditor","Someone who is owed money. Bondholders are creditors; shareholders are owners."],
+    ["Earnings per share","A company's yearly profit divided by the number of shares that exist."],
+    ["Mortgage","A long-term loan used to buy a house, repaid over many years."],
+    ["Penny stock","Shares in a very small company that trade for a few pence. Thinly traded and a favourite of fraudsters."],
+    ["Retail investor","An ordinary individual investing their own money, as opposed to a professional firm."],
+    ["Settlement","The day or two after a trade when ownership and money actually change hands."]
+  ];
+
+  var glist = document.getElementById('glist'), ghits = document.getElementById('ghits');
+  function renderG(q){
+    q = (q||'').toLowerCase().trim();
+    var out = '', n = 0;
+    terms.forEach(function(t){
+      if(!q || t[0].toLowerCase().indexOf(q) > -1 || t[1].toLowerCase().indexOf(q) > -1){
+        n++;
+        out += '<div class="def"><dt>'+t[0]+'</dt><dd>'+t[1]+'</dd></div>';
+      }
+    });
+    glist.innerHTML = out || '<p style="color:var(--ink-soft)">Nothing matched. Try a shorter word — or it may be a term this site doesn\'t cover.</p>';
+    ghits.textContent = q ? ('Showing ' + n + ' of ' + terms.length + ' terms') : ('Showing all ' + terms.length + ' terms');
+  }
+  document.getElementById('gsearch').addEventListener('input', function(e){ renderG(e.target.value); });
+  window.renderG = renderG;
+  renderG('');
+
+  /* ---------- quiz ---------- */
+  var qs = [
+    {q:"A share in Company A costs £5 and a share in Company B costs £500. Which company is bigger?",
+     a:["Company A","Company B","Impossible to tell from this"],c:2,
+     w:"Share price alone tells you nothing about size — it depends on how many shares exist. You need market cap: price × number of shares. See the Stocks tab."},
+    {q:"What is the S&P 500?",
+     a:["A stock exchange in New York","An index tracking 500 large US companies","A fund managed by the US government"],c:1,
+     w:"It's an index — a scoreboard, not a venue. You can't trade on it, only buy a fund that copies it. See the Markets tab."},
+    {q:"You buy shares on the ex-dividend date. Do you receive the upcoming dividend?",
+     a:["Yes","No, the seller does","Only if you hold to the payment date"],c:1,
+     w:"The ex-dividend date is the cut-off. Buy on or after it and the payment goes to whoever sold to you. See the Dividends tab."},
+    {q:"Interest rates rise sharply. What generally happens to the market price of bonds already issued?",
+     a:["It falls","It rises","It's unaffected"],c:0,
+     w:"Newly issued bonds now pay more, so older lower-paying bonds must fall in price to compete. Prices and rates move in opposite directions. See the Bonds tab."},
+    {q:"A group chat says a small coin will '10x by Friday' and urges you to buy now and bring friends. What is this most likely?",
+     a:["A genuine early opportunity","A pump and dump","Normal market analysis"],c:1,
+     w:"Urgency, a specific guaranteed multiple, an obscure asset and recruitment — that's four of the classic warning signs at once. See the Risks tab."},
+    {q:"Which of these genuinely reduces risk without necessarily reducing expected return?",
+     a:["Diversification","Leverage","Buying only shares that have already risen"],c:0,
+     w:"Diversification is the closest thing to a free lunch in finance. Leverage increases risk; chasing risers means paying more for the same thing. See the Strategy tab."},
+    {q:"A company's dividend yield jumps from 3% to 9% while its dividend payment stays the same. What must have happened?",
+     a:["Profits tripled","The share price fell sharply","It issued more shares"],c:1,
+     w:"Yield is dividend ÷ price. If the dividend is unchanged and yield tripled, the price collapsed — a classic yield trap. See the Dividends tab."},
+    {q:"Over long periods, how have most actively managed funds performed against their benchmark index after fees?",
+     a:["Most beat it","Most fail to beat it","They match it almost exactly"],c:1,
+     w:"The large majority underperform once fees are deducted. It's mainly arithmetic about costs rather than a judgement on skill. See the Strategy tab."},
+    {q:"Roughly what happened to the US market during the 1929 crash?",
+     a:["It recovered within a year","It took until 1954 to return to its 1929 peak","It closed permanently"],c:1,
+     w:"Recovery took about 25 years. This is why 'markets always bounce back quickly' is an overstatement — and why time horizon matters so much. See the History tab."},
+    {q:"Before investing, which should generally come first?",
+     a:["Buying the most talked-about stock","Clearing high-interest debt and building a cash buffer","Opening as many broker accounts as possible"],c:1,
+     w:"Paying off a 25% credit card is a guaranteed 25% return, and a cash buffer stops you having to sell investments at a bad moment. See the Strategy tab."}
+  ];
+
+  var qlist = document.getElementById('qlist'), answered = 0, right = 0;
+  qs.forEach(function(item, qi){
+    var d = document.createElement('div');
+    d.className = 'q';
+    var h = '<div class="qt">'+(qi+1)+'. '+item.q+'</div>';
+    item.a.forEach(function(opt, oi){ h += '<button class="opt" data-q="'+qi+'" data-o="'+oi+'">'+opt+'</button>'; });
+    h += '<p class="why" id="why'+qi+'">'+item.w+'</p>';
+    d.innerHTML = h;
+    qlist.appendChild(d);
+  });
+
+  qlist.addEventListener('click', function(e){
+    var b = e.target.closest('.opt');
+    if(!b || b.disabled) return;
+    var qi = +b.dataset.q, oi = +b.dataset.o, item = qs[qi];
+    var group = qlist.querySelectorAll('.opt[data-q="'+qi+'"]');
+    group.forEach(function(o){
+      o.disabled = true;
+      if(+o.dataset.o === item.c) o.classList.add('right');
+    });
+    if(oi !== item.c) b.classList.add('wrong');
+    else right++;
+    document.getElementById('why'+qi).classList.add('on');
+    answered++;
+    if(answered === qs.length){
+      var s = document.getElementById('qscore');
+      var msg = right >= 9 ? "You could teach this." :
+                right >= 7 ? "Solid. Skim the tabs mentioned above and you're there." :
+                right >= 4 ? "A reasonable start — the explanations point to what to reread." :
+                             "Worth another pass. Start with the Stocks tab and work along.";
+      s.textContent = right + ' out of ' + qs.length + '. ' + msg;
+    }
+  });
+  /* ---------- site-wide search ---------- */
+  var sq = document.getElementById('sq'), sres = document.getElementById('sres');
+  var INDEX = [], shown = [], sel = -1;
+
+  function esc2(s){
+    return String(s).replace(/[&<>"]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+    });
+  }
+
+  panels.forEach(function(pn){
+    var tb = document.querySelector('.tab[data-p="' + pn.id + '"]');
+    var nm = tb ? tb.textContent.trim() : pn.id;
+    var nodes = pn.querySelectorAll('h2,h3,h4,p,td,li,.def,.name,.rname,.qt');
+    Array.prototype.forEach.call(nodes, function(el){
+      if(el.closest('#j-list') || el.closest('#qlist') || el.closest('.sresults')) return;
+      if(el.querySelector && el.querySelector('.def')) return;
+      var t = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      if(t.length < 15) return;
+      INDEX.push({ el:el, tab:pn.id, name:nm, text:t, low:t.toLowerCase(),
+                   head:/^H[2-4]$/.test(el.tagName) });
+    });
+  });
+
+  function snippet(it, q){
+    var t = it.text, i = it.low.indexOf(q);
+    if(i < 0) return t.length > 112 ? t.slice(0, 112) + '\u2026' : t;
+    var s = Math.max(0, i - 38), e = Math.min(t.length, i + q.length + 74);
+    return (s ? '\u2026' : '') + t.slice(s, i) + '\u0001' + t.slice(i, i + q.length) +
+           '\u0002' + t.slice(i + q.length, e) + (e < t.length ? '\u2026' : '');
+  }
+
+  function closeS(){
+    sres.classList.remove('on');
+    sq.setAttribute('aria-expanded', 'false');
+    shown = []; sel = -1;
+  }
+
+  function renderS(q){
+    var ql = q.toLowerCase();
+    var words = ql.split(/\s+/).filter(function(w){ return w.length > 1; });
+    var out = [];
+    INDEX.forEach(function(it){
+      var s = 0;
+      if(it.low.indexOf(ql) > -1) s += 14;
+      words.forEach(function(w){ if(it.low.indexOf(w) > -1) s += 4; });
+      if(!s) return;
+      if(it.head) s += 5;
+      out.push({ it:it, s:s });
+    });
+    out.sort(function(a, b){ return b.s - a.s; });
+    shown = out.slice(0, 8).map(function(o){ return o.it; });
+    if(!shown.length){
+      sres.innerHTML = '<p class="snone">Nothing matched. Try a single word, such as dividend, bond or scam.</p>';
+    } else {
+      sres.innerHTML = shown.map(function(it, i){
+        var sn = esc2(snippet(it, ql))
+                   .replace(/\u0001/g, '<mark>').replace(/\u0002/g, '</mark>');
+        return '<button class="sresult" type="button" role="option" data-i="' + i + '">' +
+               '<span class="swhere">' + esc2(it.name) + '</span>' + sn + '</button>';
+      }).join('');
+    }
+    sel = -1;
+    sres.classList.add('on');
+    sq.setAttribute('aria-expanded', 'true');
+  }
+
+  function goS(it){
+    if(!it) return;
+    var q = sq.value.trim();
+    closeS(); sq.blur();
+    show(it.tab, true);
+    if(it.tab === 'glossary'){
+      var g = document.getElementById('gsearch');
+      if(g && window.renderG){ g.value = q; window.renderG(q); }
+      return;
+    }
+    setTimeout(function(){
+      if(!document.body.contains(it.el)) return;
+      it.el.scrollIntoView({ block:'center', behavior:'smooth' });
+      it.el.classList.remove('hit');
+      void it.el.offsetWidth;
+      it.el.classList.add('hit');
+      setTimeout(function(){ it.el.classList.remove('hit'); }, 2600);
+    }, 90);
+  }
+
+  sq.addEventListener('input', function(){
+    var v = sq.value.trim();
+    if(v.length < 2){ closeS(); return; }
+    renderS(v);
+  });
+  sq.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeS(); sq.blur(); return; }
+    if(!shown.length) return;
+    if(e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+      e.preventDefault();
+      sel = e.key === 'ArrowDown' ? Math.min(sel + 1, shown.length - 1) : Math.max(sel - 1, 0);
+      Array.prototype.forEach.call(sres.querySelectorAll('.sresult'), function(b, i){
+        b.classList.toggle('sel', i === sel);
+        if(i === sel && b.scrollIntoView) b.scrollIntoView({ block:'nearest' });
+      });
+    } else if(e.key === 'Enter'){
+      e.preventDefault();
+      goS(shown[sel < 0 ? 0 : sel]);
+    }
+  });
+  sres.addEventListener('click', function(e){
+    var b = e.target.closest('.sresult');
+    if(b) goS(shown[+b.dataset.i]);
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.searchbox')) closeS();
+  });
+})();
+</script>
+</body>
+</html>
